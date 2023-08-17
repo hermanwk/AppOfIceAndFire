@@ -19,25 +19,5 @@ extension PaginationFooterView {
             self.callback = callback
             self._pagination = pagination
         }
-        
-        func firstDisabled() -> Bool {
-            return pagination.prev == "" || pagination.first == ""
-        }
-        
-        func prevDisabled() -> Bool {
-            return pagination.prev == ""
-        }
-        
-        func displayPageNum() -> Bool {
-            return pagination.prev == "" && pagination.first == "" && pagination.next == "" && pagination.last == ""
-        }
-        
-        func nextDisabled() -> Bool {
-            return pagination.next == ""
-        }
-        
-        func lastDisabled() -> Bool {
-            return pagination.next == "" || pagination.last == ""
-        }
     }
 }

@@ -11,7 +11,7 @@ struct ThreeStateToggleView: View {
     @ObservedObject private(set) var vm: ViewModel
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(vm.label)
             Picker("", selection: $vm.value) {
                 Text("N/A").tag(0)

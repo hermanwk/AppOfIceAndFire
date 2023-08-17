@@ -12,54 +12,71 @@ struct PaginationFooterView: View {
     private(set) var vm: ViewModel
     
     var body: some View {
-        HStack (alignment: .center) {
-            HStack (alignment: .center) {
+        VStack (spacing: 0) {
+            HStack (alignment: .center, spacing: 0) {
                 Button("<<") {
                     vm.callback(vm.pagination.first)
                 }
-                .disabled(vm.firstDisabled())
-                .opacity(vm.firstDisabled() ? 0 : 1)
-                .foregroundColor(Color.white)
-                .background(Color.black)
-                .padding(1)
+                .disabled(vm.pagination.first.isEmpty || vm.pagination.prev.isEmpty)
+                .foregroundColor(vm.pagination.first.isEmpty || vm.pagination.prev.isEmpty ? Color.gray : .accentColor)
+                .frame(minHeight: 0, maxHeight: .infinity)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding(5)
+                
+                Divider()
+                    .frame(width: 1)
                 
                 Button("<") {
                     vm.callback(vm.pagination.prev)
                 }
-                .disabled(vm.prevDisabled())
-                .opacity(vm.prevDisabled() ? 0 : 1)
-                .foregroundColor(Color.white)
-                .background(Color.black)
-                .padding(1)
+                .disabled(vm.pagination.prev.isEmpty)
+                .foregroundColor(vm.pagination.prev.isEmpty ? Color.gray : .accentColor)
+                .frame(minHeight: 0, maxHeight: .infinity)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding(5)
+                
+                Divider()
+                    .frame(width: 1)
                 
                 Text(vm.pagination.currentPage == "" ? "1" : vm.pagination.currentPage)
-                    .opacity(vm.displayPageNum() ? 0 : 1)
-                    .foregroundColor(Color.white)
-                    .background(Color.black)
+                    .foregroundColor(Color.black)
+                    .frame(minHeight: 0, maxHeight: .infinity)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .padding(5)
+                
+                Divider()
+                    .frame(width: 1)
                 
                 Button(">") {
                     vm.callback(vm.pagination.next)
                 }
-                .disabled(vm.nextDisabled())
-                .opacity(vm.nextDisabled() ? 0 : 1)
-                .foregroundColor(Color.white)
-                .background(Color.black)
-                .padding(1)
+                .disabled(vm.pagination.next.isEmpty)
+                .foregroundColor(vm.pagination.next.isEmpty ? Color.gray : .accentColor)
+                .frame(minHeight: 0, maxHeight: .infinity)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding(5)
+                
+                Divider()
+                    .frame(width: 1)
                 
                 Button(">>") {
                     vm.callback(vm.pagination.last)
                 }
-                .disabled(vm.lastDisabled())
-                .opacity(vm.lastDisabled() ? 0 : 1)
-                .foregroundColor(Color.white)
-                .background(Color.black)
-                .padding(1)
+                .disabled(vm.pagination.next.isEmpty || vm.pagination.last.isEmpty)
+                .foregroundColor(vm.pagination.next.isEmpty || vm.pagination.last.isEmpty ? Color.gray : .accentColor)
+                .frame(minHeight: 0, maxHeight: .infinity)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding(5)
             }
-            .font(Font.custom(vm.theme.font(FontName.robotoRegular),
-                              size: vm.theme.fontSize(FontSizeName.fontSizeLarge)))
-            .padding(.top, 10)
-            .frame(minWidth: 0, maxWidth: .infinity)
+            .frame(height: 30)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth: 1)
+            )
         }
+        .background(Color.white)
+        .padding([.trailing, .leading], 60)
+        .padding(.bottom, 10)
     }
 }
 

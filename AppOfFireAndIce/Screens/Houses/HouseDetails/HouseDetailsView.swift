@@ -11,7 +11,7 @@ struct HouseDetailsView: View {
     private(set) var vm: ViewModel
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Group {
                 HStack {
                     Text("Name:")
