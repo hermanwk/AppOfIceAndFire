@@ -41,12 +41,26 @@ struct CharactersFilterView: View {
                     .help("Characters that are alive or dead (depending on the value) are included")
             }
             
-            NavigationLink {
-                CharactersListView(vm: CharactersListView.ViewModel(request: vm.getRequest()))
-            } label: {
-                Text("SUBMIT")
-            }
-        }.navigationBarTitle("Character search")
+            Text("SUBMIT")
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(Color.white)
+                .cornerRadius(8)
+                .overlay {
+                    NavigationLink(
+                        destination: CharactersListView(vm: CharactersListView.ViewModel(request: vm.getRequest())),
+                        label: { EmptyView() }
+                    )
+                    .opacity(0)
+                }
+        }
+        .navigationBarItems(trailing:
+            Image("characters")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+        )
     }
 }
 

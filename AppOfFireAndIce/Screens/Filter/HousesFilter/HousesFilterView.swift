@@ -45,12 +45,24 @@ struct HousesFilterView: View {
                     .help("Houses that have ancestral weapons (or not) are included")
             }
             
-            NavigationLink {
-                HousesListView(vm: HousesListView.ViewModel(request: vm.getRequest()))
-            } label: {
-                Text("SUBMIT")
-            }
+            Text("SUBMIT")
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(Color.white)
+                .cornerRadius(8)
+                .overlay {
+                    NavigationLink(destination: HousesListView(vm: HousesListView.ViewModel(request: vm.getRequest())), label: { EmptyView() })
+                        .opacity(0)
+                }
+
         }
+        .navigationBarItems(trailing:
+            Image("houses")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+        )
     }
 }
 

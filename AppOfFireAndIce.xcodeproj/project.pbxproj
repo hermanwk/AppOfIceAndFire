@@ -21,9 +21,6 @@
 		09383A4E2A840E9E00C45774 /* GoTCharacterDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09383A4D2A840E9E00C45774 /* GoTCharacterDto.swift */; };
 		09383A502A840EBE00C45774 /* GoTHouseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09383A4F2A840EBE00C45774 /* GoTHouseDto.swift */; };
 		09383A522A840F3700C45774 /* GoTObjectDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09383A512A840F3700C45774 /* GoTObjectDto.swift */; };
-		09383A582A8451A100C45774 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09383A572A8451A100C45774 /* AppTheme.swift */; };
-		09383A5B2A84529300C45774 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09383A5A2A84529300C45774 /* ColorTheme.swift */; };
-		09383A5D2A8452D900C45774 /* FontThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09383A5C2A8452D900C45774 /* FontThemes.swift */; };
 		09383A6A2A8453A800C45774 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09383A612A84539D00C45774 /* SF-Pro-Text-Bold.otf */; };
 		09383A6B2A8453A800C45774 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09383A612A84539D00C45774 /* SF-Pro-Text-Bold.otf */; };
 		09383A6C2A8453A800C45774 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09383A612A84539D00C45774 /* SF-Pro-Text-Bold.otf */; };
@@ -63,6 +60,10 @@
 		09383ACB2A8509EA00C45774 /* PaginationFooterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09383ACA2A8509EA00C45774 /* PaginationFooterViewModel.swift */; };
 		09383ACC2A8509EA00C45774 /* PaginationFooterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09383ACA2A8509EA00C45774 /* PaginationFooterViewModel.swift */; };
 		09383ACD2A8509EA00C45774 /* PaginationFooterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09383ACA2A8509EA00C45774 /* PaginationFooterViewModel.swift */; };
+		0985A06A2A8E77FA0078BF2C /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985A0692A8E77FA0078BF2C /* SplashScreenView.swift */; };
+		0985A06E2A8EA38A0078BF2C /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985A06D2A8EA38A0078BF2C /* Themes.swift */; };
+		0985A0712A8EACFE0078BF2C /* SimpleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985A0702A8EACFE0078BF2C /* SimpleRowView.swift */; };
+		0985A0772A8EAD290078BF2C /* LinkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985A0762A8EAD290078BF2C /* LinkRowView.swift */; };
 		09F361702A8B7DCD003F0F8A /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F3616F2A8B7DCD003F0F8A /* ListItemView.swift */; };
 		09F361722A8B7E99003F0F8A /* ListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F361712A8B7E99003F0F8A /* ListItemViewModel.swift */; };
 		09F361792A8B94E0003F0F8A /* HousesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F361782A8B94E0003F0F8A /* HousesListView.swift */; };
@@ -129,9 +130,6 @@
 		09383A4D2A840E9E00C45774 /* GoTCharacterDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTCharacterDto.swift; sourceTree = "<group>"; };
 		09383A4F2A840EBE00C45774 /* GoTHouseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTHouseDto.swift; sourceTree = "<group>"; };
 		09383A512A840F3700C45774 /* GoTObjectDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTObjectDto.swift; sourceTree = "<group>"; };
-		09383A572A8451A100C45774 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
-		09383A5A2A84529300C45774 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
-		09383A5C2A8452D900C45774 /* FontThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontThemes.swift; sourceTree = "<group>"; };
 		09383A612A84539D00C45774 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		09383A622A84539E00C45774 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		09383A632A84539F00C45774 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -145,6 +143,11 @@
 		09383AC12A84FBF700C45774 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		09383AC62A85097C00C45774 /* PaginationFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationFooterView.swift; sourceTree = "<group>"; };
 		09383ACA2A8509EA00C45774 /* PaginationFooterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationFooterViewModel.swift; sourceTree = "<group>"; };
+		0985A0692A8E77FA0078BF2C /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		0985A06B2A8E7A270078BF2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0985A06D2A8EA38A0078BF2C /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		0985A0702A8EACFE0078BF2C /* SimpleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRowView.swift; sourceTree = "<group>"; };
+		0985A0762A8EAD290078BF2C /* LinkRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkRowView.swift; sourceTree = "<group>"; };
 		09F3616F2A8B7DCD003F0F8A /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		09F361712A8B7E99003F0F8A /* ListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemViewModel.swift; sourceTree = "<group>"; };
 		09F361782A8B94E0003F0F8A /* HousesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousesListView.swift; sourceTree = "<group>"; };
@@ -224,6 +227,7 @@
 		093839D32A83B22600C45774 /* AppOfFireAndIce */ = {
 			isa = PBXGroup;
 			children = (
+				0985A06B2A8E7A270078BF2C /* Info.plist */,
 				09383A3E2A83F17E00C45774 /* Config */,
 				09383A3B2A83CF3500C45774 /* Services */,
 				09383A162A83C46600C45774 /* Screens */,
@@ -264,9 +268,9 @@
 		093839FE2A83B2D500C45774 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				0985A06C2A8EA3670078BF2C /* Helpers */,
 				09383A852A846B7700C45774 /* Components */,
 				09383A602A84535900C45774 /* Fonts */,
-				09383A592A84523200C45774 /* Themes */,
 				09383A462A83FEFA00C45774 /* Dtos */,
 				09383A352A83C6D900C45774 /* Extensions */,
 				093839FF2A83B2E100C45774 /* Models */,
@@ -296,6 +300,7 @@
 		09383A162A83C46600C45774 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				0985A0682A8E77E00078BF2C /* SplashScreen */,
 				09F3619B2A8C7F9E003F0F8A /* Filter */,
 				09F361962A8C4AAE003F0F8A /* Main */,
 				09383A182A83C47700C45774 /* Books */,
@@ -370,16 +375,6 @@
 			path = Dtos;
 			sourceTree = "<group>";
 		};
-		09383A592A84523200C45774 /* Themes */ = {
-			isa = PBXGroup;
-			children = (
-				09383A572A8451A100C45774 /* AppTheme.swift */,
-				09383A5A2A84529300C45774 /* ColorTheme.swift */,
-				09383A5C2A8452D900C45774 /* FontThemes.swift */,
-			);
-			path = Themes;
-			sourceTree = "<group>";
-		};
 		09383A602A84535900C45774 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +394,7 @@
 		09383A852A846B7700C45774 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0985A06F2A8EACE00078BF2C /* Rows */,
 				09F361BE2A8E0891003F0F8A /* CollapsableContainer */,
 				09F361B72A8CF61A003F0F8A /* ThreeStateToggle */,
 				09F361632A8A5E86003F0F8A /* ListItems */,
@@ -414,6 +410,47 @@
 				09383ACA2A8509EA00C45774 /* PaginationFooterViewModel.swift */,
 			);
 			path = PaginationFooter;
+			sourceTree = "<group>";
+		};
+		0985A0682A8E77E00078BF2C /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0985A0692A8E77FA0078BF2C /* SplashScreenView.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		0985A06C2A8EA3670078BF2C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0985A06D2A8EA38A0078BF2C /* Themes.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0985A06F2A8EACE00078BF2C /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				0985A0732A8EAD0B0078BF2C /* LinkRow */,
+				0985A0722A8EAD020078BF2C /* SimpleRow */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
+		0985A0722A8EAD020078BF2C /* SimpleRow */ = {
+			isa = PBXGroup;
+			children = (
+				0985A0702A8EACFE0078BF2C /* SimpleRowView.swift */,
+			);
+			path = SimpleRow;
+			sourceTree = "<group>";
+		};
+		0985A0732A8EAD0B0078BF2C /* LinkRow */ = {
+			isa = PBXGroup;
+			children = (
+				0985A0762A8EAD290078BF2C /* LinkRowView.swift */,
+			);
+			path = LinkRow;
 			sourceTree = "<group>";
 		};
 		09F361632A8A5E86003F0F8A /* ListItems */ = {
@@ -682,9 +719,11 @@
 				09F361702A8B7DCD003F0F8A /* ListItemView.swift in Sources */,
 				09F361952A8C4837003F0F8A /* BooksListViewModel.swift in Sources */,
 				09F361812A8B95B2003F0F8A /* HouseDetailsView.swift in Sources */,
+				0985A06A2A8E77FA0078BF2C /* SplashScreenView.swift in Sources */,
 				093839D52A83B22600C45774 /* AppOfFireAndIceApp.swift in Sources */,
 				09F361AE2A8C80E5003F0F8A /* CharactersFilterViewModel.swift in Sources */,
 				09F3619D2A8C800A003F0F8A /* MainFilterView.swift in Sources */,
+				0985A0712A8EACFE0078BF2C /* SimpleRowView.swift in Sources */,
 				09383A3D2A83CF4D00C45774 /* FireAndIceService.swift in Sources */,
 				09F361C22A8E0901003F0F8A /* CollapsableContainerHeaderView.swift in Sources */,
 				09F361982A8C4AC1003F0F8A /* MainView.swift in Sources */,
@@ -693,21 +732,20 @@
 				09F3619F2A8C8019003F0F8A /* MainFilterViewModel.swift in Sources */,
 				09383AC72A85097C00C45774 /* PaginationFooterView.swift in Sources */,
 				09383A402A83F1B700C45774 /* ConfigKeys.swift in Sources */,
-				09383A5B2A84529300C45774 /* ColorTheme.swift in Sources */,
 				09F361912A8C466D003F0F8A /* BookDetailsViewModel.swift in Sources */,
-				09383A582A8451A100C45774 /* AppTheme.swift in Sources */,
+				0985A06E2A8EA38A0078BF2C /* Themes.swift in Sources */,
 				09383A4C2A840E8700C45774 /* GoTBookDto.swift in Sources */,
 				09F361C02A8E08C4003F0F8A /* CollapsableContainerView.swift in Sources */,
 				09F3617E2A8B954D003F0F8A /* HousesListViewModel.swift in Sources */,
 				09383ABE2A84F72F00C45774 /* PaginationModel.swift in Sources */,
 				09F361AA2A8C80C6003F0F8A /* BooksFilterViewModel.swift in Sources */,
-				09383A5D2A8452D900C45774 /* FontThemes.swift in Sources */,
 				09383A502A840EBE00C45774 /* GoTHouseDto.swift in Sources */,
 				09F3618F2A8C4660003F0F8A /* BookDetailsView.swift in Sources */,
 				09F361B92A8CF639003F0F8A /* ThreeStateToggleView.swift in Sources */,
 				09F361B42A8CCD7B003F0F8A /* NetworkError.swift in Sources */,
 				09383A522A840F3700C45774 /* GoTObjectDto.swift in Sources */,
 				09383A4E2A840E9E00C45774 /* GoTCharacterDto.swift in Sources */,
+				0985A0772A8EAD290078BF2C /* LinkRowView.swift in Sources */,
 				09F361A82A8C80B8003F0F8A /* BooksFilterView.swift in Sources */,
 				09383ACB2A8509EA00C45774 /* PaginationFooterViewModel.swift in Sources */,
 				09F3618C2A8C4308003F0F8A /* CharactersListViewModel.swift in Sources */,
@@ -889,9 +927,9 @@
 				DEVELOPMENT_TEAM = RURN7P4FCF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppOfFireAndIce/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -919,9 +957,9 @@
 				DEVELOPMENT_TEAM = RURN7P4FCF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppOfFireAndIce/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;

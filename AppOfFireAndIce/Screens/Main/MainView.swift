@@ -17,7 +17,8 @@ struct MainView: View {
                 MainFilterView(vm: MainFilterView.ViewModel(selectedTab: vm.selectedTab))
             } label: {
                 Text("Advanced Filtering")
-            }
+                    .padding()
+            }.accentColor(.blue)
             
             TabView(selection: $vm.selectedTab) {
                 HousesListView(vm: HousesListView.ViewModel(request: vm.housesRequest, cancelSearch: {
@@ -44,8 +45,18 @@ struct MainView: View {
                     }
                     .tag(PageEnum.books)
             }
-            .navigationTitle("AppOfFireAndIce")
+            .navigationTitle("AppOfIceAndFire")
+            .toolbarBackground(Color.cyan, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.automatic)
+            .navigationBarItems(trailing:
+                Image("iceAndFire")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50, height: 50)
+            )
         }
+        .accentColor(.black)
         .searchable(text: $vm.searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search by keyword")
         .onSubmit(of: .search) {
             vm.search()

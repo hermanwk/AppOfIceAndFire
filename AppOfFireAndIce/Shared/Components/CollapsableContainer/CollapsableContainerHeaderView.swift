@@ -26,6 +26,7 @@ struct SectionHeader: View {
         Text(offLabel)
       }
     })
+    .accentColor(Color.blue)
     .font(Font.caption)
     .foregroundColor(.accentColor)
     .frame(maxWidth: .infinity, alignment: .trailing)

@@ -16,7 +16,7 @@ extension ListItemView {
         var secondaryTitle: String
         var secondaryText: String
         
-        init(image: String, primaryTitle: String, primaryText: String, secondaryTitle: String = "", secondaryText: String = "") {
+        init(image: String = "", primaryTitle: String, primaryText: String, secondaryTitle: String = "", secondaryText: String = "") {
             self.image = image
             self.primaryTitle = primaryTitle
             self.primaryText = primaryText

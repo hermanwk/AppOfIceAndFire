@@ -21,10 +21,10 @@ struct BooksListView: View {
             } else {
                 List(vm.model, id: \.self) { book in
                     NavigationLink {
-                        BookDetailsView(vm: BookDetailsView.ViewModel(book: book))
+                        BookDetailsView(vm: BookDetailsView.ViewModel(title: "Book Details", book: book))
                     } label: {
-                        ListItemView(vm: ListItemView.ViewModel(image: "",  primaryTitle: "Title", primaryText: book.name ?? "", secondaryTitle: "Media type", secondaryText: book.mediaType ?? ""))
-                    }.navigationBarTitle("Book Details")
+                        ListItemView(vm: ListItemView.ViewModel(image: vm.getGenderIcon(book: book),  primaryTitle: "Title", primaryText: book.name ?? "", secondaryTitle: "Media type", secondaryText: book.mediaType ?? ""))
+                    }.accentColor(.black)
                 }
                 .listStyle(.plain)
                 
@@ -32,6 +32,9 @@ struct BooksListView: View {
             }
         }
         .navigationBarTitle(vm.title)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color.cyan, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .onChange(of: isSearching) { newValue in
             if (!newValue) {
                 vm.cancelSearch()

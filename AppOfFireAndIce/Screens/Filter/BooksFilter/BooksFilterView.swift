@@ -35,12 +35,26 @@ struct BooksFilterView: View {
                 }).help("Books that were released before, or on, the given date are included")
             }
             
-            NavigationLink {
-                BooksListView(vm: BooksListView.ViewModel(request: vm.getRequest()))
-            } label: {
-                Text("SUBMIT")
-            }
-        }.navigationBarTitle("Book search")
+            Text("SUBMIT")
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(Color.white)
+                .cornerRadius(8)
+                .overlay {
+                    NavigationLink(
+                        destination: BooksListView(vm: BooksListView.ViewModel(request: vm.getRequest())),
+                        label: { EmptyView() }
+                    )
+                    .opacity(0)
+                }
+        }
+        .navigationBarItems(trailing:
+            Image("books")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+        )
     }
 }
 

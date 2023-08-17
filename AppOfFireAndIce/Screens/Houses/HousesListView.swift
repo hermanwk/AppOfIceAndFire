@@ -22,10 +22,10 @@ struct HousesListView: View {
                 if (vm.model.count > 0) {
                     List(vm.model, id: \.self) { house in
                         NavigationLink {
-                            HouseDetailsView(vm: HouseDetailsView.ViewModel(house: house))
+                            HouseDetailsView(vm: HouseDetailsView.ViewModel(title: "Houses", house: house))
                         } label: {
-                            ListItemView(vm: ListItemView.ViewModel(image: "",  primaryTitle: "Name", primaryText: house.name ?? "", secondaryTitle: "Region", secondaryText: house.region ?? ""))
-                        }.navigationBarTitle("Houses")
+                            ListItemView(vm: ListItemView.ViewModel(image: HouseThemes.getOverlordIcon(region: house.region ?? ""),  primaryTitle: "Name", primaryText: house.name ?? "", secondaryTitle: "Region", secondaryText: house.region ?? ""))
+                        }.accentColor(.black)
                     }
                     .listStyle(.plain)
                     
@@ -37,6 +37,9 @@ struct HousesListView: View {
             }
         }
         .navigationBarTitle(vm.title)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color.cyan, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .onChange(of: isSearching) { newValue in
             if (!newValue) {
                 vm.cancelSearch()

@@ -9,7 +9,6 @@ import Foundation
 
 extension CharacterDetailsView {
     class ViewModel {
-        var theme: AppTheme
         var title: String
         var model: GoTCharacterDto?
         var url: String
@@ -17,7 +16,6 @@ extension CharacterDetailsView {
         var apiService: FireAndServiceService
         
         init(title: String = "Character Details", character: GoTCharacterDto) {
-            theme = AppTheme.preview
             self.title = title
             self.model = character
             self.url = ""
@@ -26,7 +24,6 @@ extension CharacterDetailsView {
         }
         
         init(title: String = "Character Details", url: String) {
-            theme = AppTheme.preview
             self.title = title
             self.url = url
             self.isLoading = false

@@ -29,7 +29,17 @@ struct MainFilterView: View {
                     Label("Books", systemImage: "book.fill")
                 }
                 .tag(PageEnum.books)
-        }.navigationBarTitle("\(vm.getSearchType()) search")
+        }
+        .navigationBarTitle("\(vm.getSearchType()) search")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color.cyan, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .navigationBarItems(trailing:
+            Image(vm.getSearchType().lowercased())
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+        )
     }
 }
 

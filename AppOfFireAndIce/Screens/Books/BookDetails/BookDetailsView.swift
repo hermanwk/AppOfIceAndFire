@@ -11,73 +11,84 @@ struct BookDetailsView: View {
     private(set) var vm: ViewModel
     
     var body: some View {
-        VStack {
-            Group {
-                HStack {
-                    Text("Name:")
+        VStack() {
+            VStack(alignment: .leading) {
+                HStack(alignment: .center) {
                     Text(vm.model?.name ?? "")
+                        .font(.title)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    Spacer()
+                    
+                    Image(BookThemes.getBookImage(book: vm.model?.name ?? ""))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
                 }
-                HStack {
-                    Text("ISBN:")
-                    Text(vm.model?.isbn ?? "")
+                
+                Divider()
+                    
+                Group {
+                    SimpleRowView(title: "ISBN", text: vm.model?.isbn ?? "")
+                    SimpleRowView(title: "Authors", text: vm.model?.authors?.joined(separator:", ") ?? "")
+                    SimpleRowView(title: "Number of page", text: vm.model?.numberOfPages?.description ?? "" )
+                  SimpleRowView(title: "Publisher", text: vm.model?.publisher ?? "")
                 }
-                HStack {
-                    Text("Authors:")
-                    Text(vm.model?.authors?.joined(separator:", ") ?? "")
-                }
-                HStack {
-                    Text("Number of page:")
-                    Text(vm.model?.numberOfPages?.description ?? "")
-                }
-                HStack {
-                    Text("Publisher:")
-                    Text(vm.model?.publisher ?? "")
+                
+                Group {
+                    SimpleRowView(title: "Country", text: vm.model?.country ?? "")
+                    SimpleRowView(title: "Media type", text: vm.model?.mediaType ?? "")
+                    SimpleRowView(title: "Released", text: vm.model?.released ?? "")
+                    HStack {
+                        Text("Characters:")
+                        Spacer()
+                        NavigationLink {
+                            CharactersListView(vm: CharactersListView.ViewModel(title: "Characters in \(vm.model?.name ?? "")", urls: vm.model?.characters ?? []))
+                        } label: {
+                            HStack {
+                                Text("Show more")
+                                    .foregroundColor(Color.blue)
+                                Image(systemName: "rectangle.portrait.and.arrow.forward")
+                                    .resizable()
+                                    .foregroundColor(Color.black)
+                                    .frame(width: 14, height: 14)
+                            }
+                        }
+                    }
+                    HStack {
+                        Text("POV Character:")
+                        Spacer()
+                        NavigationLink {
+                            CharactersListView(vm: CharactersListView.ViewModel(title: "POV Characters in \(vm.model?.name ?? "")", urls: vm.model?.povCharacters ?? []))
+                        } label: {
+                            HStack {
+                                Text("Show more")
+                                    .foregroundColor(Color.blue)
+                                Image(systemName: "rectangle.portrait.and.arrow.forward")
+                                    .resizable()
+                                    .foregroundColor(Color.black)
+                                    .frame(width: 14, height: 14)
+                            }
+                        }
+                    }
                 }
             }
+            .navigationBarTitle(vm.title)
+            .tint(Color.black)
+            .accentColor(Color.black)
+            .toolbarBackground(BookThemes.getBookColor(book: vm.model?.name ?? ""), for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .padding(20)
+            .background(Color.white)
+            .cornerRadius(20)
             
-            Group {
-                HStack {
-                    Text("Country:")
-                    Text(vm.model?.country ?? "")
-                }
-                HStack {
-                    Text("Media type:")
-                    Text(vm.model?.mediaType ?? "")
-                }
-                HStack {
-                    Text("Released:")
-                    Text(vm.model?.released ?? "")
-                }
-                HStack {
-                    Text("Characters:")
-                    NavigationLink {
-                        CharactersListView(vm: CharactersListView.ViewModel(title: "Characters in \(vm.model?.name ?? "")", urls: vm.model?.characters ?? []))
-                    } label: {
-                        HStack {
-                            Text("Show more")
-                            Image(systemName: "rectangle.portrait.and.arrow.forward")
-                                .resizable()
-                                .foregroundColor(Color.black)
-                                .frame(width: 14, height: 14)
-                        }
-                    }
-                }
-                HStack {
-                    Text("POV Character:")
-                    NavigationLink {
-                        CharactersListView(vm: CharactersListView.ViewModel(title: "POV Characters in \(vm.model?.name ?? "")", urls: vm.model?.povCharacters ?? []))
-                    } label: {
-                        HStack {
-                            Text("Show more")
-                            Image(systemName: "rectangle.portrait.and.arrow.forward")
-                                .resizable()
-                                .foregroundColor(Color.black)
-                                .frame(width: 14, height: 14)
-                        }
-                    }
-                }
-            }
-        }.navigationBarTitle(vm.title)
+            Spacer()
+        }
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .frame(minHeight: 0, maxHeight: .infinity)
+        .padding(20)
+        .background(Color("backgroundColor"))
     }
 }
 

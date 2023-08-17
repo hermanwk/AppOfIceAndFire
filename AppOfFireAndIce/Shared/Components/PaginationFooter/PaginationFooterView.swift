@@ -75,6 +75,7 @@ struct PaginationFooterView: View {
             )
         }
         .background(Color.white)
+        .accentColor(.blue)
         .padding([.trailing, .leading], 60)
         .padding(.bottom, 10)
     }

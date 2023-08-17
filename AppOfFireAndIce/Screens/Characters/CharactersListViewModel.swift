@@ -9,7 +9,6 @@ import SwiftUI
 
 extension CharactersListView {
     class ViewModel: ObservableObject {
-        var theme: AppTheme
         var title: String
         var isLoading: Bool
         var pagination: PaginationModel
@@ -18,7 +17,6 @@ extension CharactersListView {
         @Published var model: [GoTCharacterDto]
         
         init(title: String = "Characters", urls: [String]? = nil, request: GoTCharacterRequest? = nil, cancelSearch: @escaping () -> () = {}) {
-            theme = AppTheme.preview
             self.title = title
             isLoading = false
             pagination = PaginationModel()
@@ -125,6 +123,17 @@ extension CharactersListView {
                 return ["Gender", character.gender ?? ""]
             } else {
                 return ["", ""]
+            }
+        }
+        
+        func getGenderIcon(character: GoTCharacterDto) -> String {
+            switch character.gender {
+            case "Male":
+                return "male"
+            case "Female":
+                return "female"
+            default:
+                return "unknownGender"
             }
         }
     }

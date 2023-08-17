@@ -15,7 +15,10 @@ struct ListItemView: View {
         VStack {
             HStack() {
                 // House crest of the region
-                Image("")
+                Image(vm.image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50, height: 50)
                 VStack(alignment: .leading) {
                     HStack() {
                         Text("\(vm.primaryTitle):")

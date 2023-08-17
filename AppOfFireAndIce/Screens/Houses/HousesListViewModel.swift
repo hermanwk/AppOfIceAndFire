@@ -10,7 +10,6 @@ import SwiftUI
 
 extension HousesListView {
     class ViewModel: ObservableObject {
-        var theme: AppTheme
         var title: String
         var isLoading: Bool
         var pagination: PaginationModel
@@ -19,7 +18,6 @@ extension HousesListView {
         @Published var model: [GoTHouseDto]
         
         init(title: String = "Houses", urls: [String]? = nil, request: GoTHouseRequest? = nil, cancelSearch: @escaping () -> () = {}) {
-            theme = AppTheme.preview
             self.title = title
             isLoading = false
             pagination = PaginationModel()
@@ -107,4 +105,3 @@ extension HousesListView {
         }
     }
 }
-

@@ -10,7 +10,6 @@ import SwiftUI
 
 extension BooksListView {
     class ViewModel: ObservableObject {
-        var theme: AppTheme
         var title: String
         var isLoading: Bool
         var pagination: PaginationModel
@@ -19,7 +18,6 @@ extension BooksListView {
         @Published var model: [GoTBookDto]
         
         init(title: String = "Books", urls: [String]? = nil, request: GoTBookRequest? = nil, cancelSearch: @escaping () -> () = {}) {
-            theme = AppTheme.preview
             self.title = title
             isLoading = false
             pagination = PaginationModel()
@@ -109,6 +107,17 @@ extension BooksListView {
                 return ["Name", character.name ?? ""]
             } else {
                 return ["Aliases", character.aliases?.joined(separator:", ") ?? ""]
+            }
+        }
+        
+        func getGenderIcon(book: GoTBookDto) -> String {
+            switch book.mediaType {
+            case "GraphicNovel":
+                return "blackSpear"
+            case "Paperback":
+                return "iceKnife"
+            default:
+                return "flameSword"
             }
         }
     }

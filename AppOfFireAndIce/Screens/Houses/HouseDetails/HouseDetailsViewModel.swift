@@ -9,7 +9,6 @@ import Foundation
 
 extension HouseDetailsView {
     class ViewModel {
-        var theme: AppTheme
         var title: String
         var model: GoTHouseDto?
         var url: String
@@ -17,7 +16,6 @@ extension HouseDetailsView {
         var apiService: FireAndServiceService
         
         init(title: String = "Book Details", house: GoTHouseDto) {
-            theme = AppTheme.preview
             self.title = title
             self.model = house
             self.url = ""
@@ -26,7 +24,6 @@ extension HouseDetailsView {
         }
         
         init(title: String = "Book Details", url: String) {
-            theme = AppTheme.preview
             self.title = title
             self.url = url
             self.isLoading = false

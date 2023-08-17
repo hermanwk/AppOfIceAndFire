@@ -21,10 +21,10 @@ struct CharactersListView: View {
             } else {
                 List(vm.model, id: \.self) { character in
                     NavigationLink {
-                        CharacterDetailsView(vm: CharacterDetailsView.ViewModel(character: character))
+                        CharacterDetailsView(vm: CharacterDetailsView.ViewModel(title: "Character Details", character: character))
                     } label: {
-                        ListItemView(vm: ListItemView.ViewModel(image: "",  primaryTitle: vm.getPrimaryTitleText(character: character)[0], primaryText: vm.getPrimaryTitleText(character: character)[1], secondaryTitle: vm.getSecondaryTitleText(character: character)[0], secondaryText: vm.getSecondaryTitleText(character: character)[1]))
-                    }.navigationBarTitle("Character Details")
+                        ListItemView(vm: ListItemView.ViewModel(image: CharacterThemes.getGenderIcon(gender:  character.gender ?? ""), primaryTitle: CharacterThemes.getCharacterIdentifier(character: character)[0], primaryText: CharacterThemes.getCharacterIdentifier(character: character)[1], secondaryTitle: vm.getSecondaryTitleText(character: character)[0], secondaryText: vm.getSecondaryTitleText(character: character)[1]))
+                    }.accentColor(.black)
                 }
                 .listStyle(.plain)
                 
@@ -32,6 +32,9 @@ struct CharactersListView: View {
             }
         }
         .navigationBarTitle(vm.title)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color.cyan, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .onChange(of: isSearching) { newValue in
             if (!newValue) {
                 vm.cancelSearch()
