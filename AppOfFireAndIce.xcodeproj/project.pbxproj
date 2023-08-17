@@ -90,6 +90,8 @@
 		09F361B42A8CCD7B003F0F8A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F361B32A8CCD7A003F0F8A /* NetworkError.swift */; };
 		09F361B92A8CF639003F0F8A /* ThreeStateToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F361B82A8CF639003F0F8A /* ThreeStateToggleView.swift */; };
 		09F361BD2A8CFC19003F0F8A /* ThreeStateToggleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F361BC2A8CFC19003F0F8A /* ThreeStateToggleViewModel.swift */; };
+		09F361C02A8E08C4003F0F8A /* CollapsableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F361BF2A8E08C4003F0F8A /* CollapsableContainerView.swift */; };
+		09F361C22A8E0901003F0F8A /* CollapsableContainerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F361C12A8E0901003F0F8A /* CollapsableContainerHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +172,8 @@
 		09F361B32A8CCD7A003F0F8A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		09F361B82A8CF639003F0F8A /* ThreeStateToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeStateToggleView.swift; sourceTree = "<group>"; };
 		09F361BC2A8CFC19003F0F8A /* ThreeStateToggleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeStateToggleViewModel.swift; sourceTree = "<group>"; };
+		09F361BF2A8E08C4003F0F8A /* CollapsableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsableContainerView.swift; sourceTree = "<group>"; };
+		09F361C12A8E0901003F0F8A /* CollapsableContainerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsableContainerHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,7 +268,7 @@
 				09383A602A84535900C45774 /* Fonts */,
 				09383A592A84523200C45774 /* Themes */,
 				09383A462A83FEFA00C45774 /* Dtos */,
-				09383A352A83C6D900C45774 /* Helpers */,
+				09383A352A83C6D900C45774 /* Extensions */,
 				093839FF2A83B2E100C45774 /* Models */,
 			);
 			path = Shared;
@@ -331,12 +335,12 @@
 			path = Houses;
 			sourceTree = "<group>";
 		};
-		09383A352A83C6D900C45774 /* Helpers */ = {
+		09383A352A83C6D900C45774 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				09383AC12A84FBF700C45774 /* Extensions.swift */,
 			);
-			path = Helpers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		09383A3B2A83CF3500C45774 /* Services */ = {
@@ -395,6 +399,7 @@
 		09383A852A846B7700C45774 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				09F361BE2A8E0891003F0F8A /* CollapsableContainer */,
 				09F361B72A8CF61A003F0F8A /* ThreeStateToggle */,
 				09F361632A8A5E86003F0F8A /* ListItems */,
 				09383AC52A85096000C45774 /* PaginationFooter */,
@@ -502,6 +507,15 @@
 				09F361BC2A8CFC19003F0F8A /* ThreeStateToggleViewModel.swift */,
 			);
 			path = ThreeStateToggle;
+			sourceTree = "<group>";
+		};
+		09F361BE2A8E0891003F0F8A /* CollapsableContainer */ = {
+			isa = PBXGroup;
+			children = (
+				09F361BF2A8E08C4003F0F8A /* CollapsableContainerView.swift */,
+				09F361C12A8E0901003F0F8A /* CollapsableContainerHeaderView.swift */,
+			);
+			path = CollapsableContainer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -672,6 +686,7 @@
 				09F361AE2A8C80E5003F0F8A /* CharactersFilterViewModel.swift in Sources */,
 				09F3619D2A8C800A003F0F8A /* MainFilterView.swift in Sources */,
 				09383A3D2A83CF4D00C45774 /* FireAndIceService.swift in Sources */,
+				09F361C22A8E0901003F0F8A /* CollapsableContainerHeaderView.swift in Sources */,
 				09F361982A8C4AC1003F0F8A /* MainView.swift in Sources */,
 				09F361882A8C3EFB003F0F8A /* CharacterDetailsViewModel.swift in Sources */,
 				09383A0B2A83B98200C45774 /* PageEnum.swift in Sources */,
@@ -682,6 +697,7 @@
 				09F361912A8C466D003F0F8A /* BookDetailsViewModel.swift in Sources */,
 				09383A582A8451A100C45774 /* AppTheme.swift in Sources */,
 				09383A4C2A840E8700C45774 /* GoTBookDto.swift in Sources */,
+				09F361C02A8E08C4003F0F8A /* CollapsableContainerView.swift in Sources */,
 				09F3617E2A8B954D003F0F8A /* HousesListViewModel.swift in Sources */,
 				09383ABE2A84F72F00C45774 /* PaginationModel.swift in Sources */,
 				09F361AA2A8C80C6003F0F8A /* BooksFilterViewModel.swift in Sources */,

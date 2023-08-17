@@ -13,16 +13,23 @@ struct BooksListView: View {
     
     var body: some View {
         VStack {
-            List(vm.model, id: \.self) { book in
-                NavigationLink {
-                    BookDetailsView(vm: BookDetailsView.ViewModel(book: book))
-                } label: {
-                    ListItemView(vm: ListItemView.ViewModel(image: "",  primaryTitle: "Title", primaryText: book.name ?? "", secondaryTitle: "Media type", secondaryText: book.mediaType ?? ""))
-                }.navigationBarTitle("Book Details")
+            if (vm.isLoading) {
+                ProgressView()
+                    .controlSize(.large)
+                    .frame(maxHeight: .infinity, alignment: .center)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            } else {
+                List(vm.model, id: \.self) { book in
+                    NavigationLink {
+                        BookDetailsView(vm: BookDetailsView.ViewModel(book: book))
+                    } label: {
+                        ListItemView(vm: ListItemView.ViewModel(image: "",  primaryTitle: "Title", primaryText: book.name ?? "", secondaryTitle: "Media type", secondaryText: book.mediaType ?? ""))
+                    }.navigationBarTitle("Book Details")
+                }
+                .listStyle(.plain)
+                
+                PaginationFooterView(vm: PaginationFooterView.ViewModel(callback: vm.getBooksFromPaginationUrls, pagination: $vm.pagination))
             }
-            .listStyle(.plain)
-            
-            PaginationFooterView(vm: PaginationFooterView.ViewModel(callback: vm.getBooksFromPaginationUrls, pagination: $vm.pagination))
         }
         .navigationBarTitle(vm.title)
         .onChange(of: isSearching) { newValue in

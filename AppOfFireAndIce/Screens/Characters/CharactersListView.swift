@@ -13,16 +13,23 @@ struct CharactersListView: View {
     
     var body: some View {
         VStack {
-            List(vm.model, id: \.self) { character in
-                NavigationLink {
-                    CharacterDetailsView(vm: CharacterDetailsView.ViewModel(character: character))
-                } label: {
-                    ListItemView(vm: ListItemView.ViewModel(image: "",  primaryTitle: vm.getPrimaryTitleText(character: character)[0], primaryText: vm.getPrimaryTitleText(character: character)[1], secondaryTitle: vm.getSecondaryTitleText(character: character)[0], secondaryText: vm.getSecondaryTitleText(character: character)[1]))
-                }.navigationBarTitle("Character Details")
+            if (vm.isLoading) {
+                ProgressView()
+                    .controlSize(.large)
+                    .frame(maxHeight: .infinity, alignment: .center)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            } else {
+                List(vm.model, id: \.self) { character in
+                    NavigationLink {
+                        CharacterDetailsView(vm: CharacterDetailsView.ViewModel(character: character))
+                    } label: {
+                        ListItemView(vm: ListItemView.ViewModel(image: "",  primaryTitle: vm.getPrimaryTitleText(character: character)[0], primaryText: vm.getPrimaryTitleText(character: character)[1], secondaryTitle: vm.getSecondaryTitleText(character: character)[0], secondaryText: vm.getSecondaryTitleText(character: character)[1]))
+                    }.navigationBarTitle("Character Details")
+                }
+                .listStyle(.plain)
+                
+                PaginationFooterView(vm: PaginationFooterView.ViewModel(callback: vm.getCharactersFromPaginationUrls, pagination: $vm.pagination))
             }
-            .listStyle(.plain)
-            
-            PaginationFooterView(vm: PaginationFooterView.ViewModel(callback: vm.getCharactersFromPaginationUrls, pagination: $vm.pagination))
         }
         .navigationBarTitle(vm.title)
         .onChange(of: isSearching) { newValue in

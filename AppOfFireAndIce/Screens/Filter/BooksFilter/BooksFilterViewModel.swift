@@ -11,14 +11,18 @@ import SwiftUI
 extension BooksFilterView {
     class ViewModel: ObservableObject {
         @Published var name: String
+        var includeFromDate: Bool
         @Published var fromReleaseDate: Date
+        var includeToDate: Bool
         @Published var toReleaseDate: Date
         var page: Int?
         var pageSize: Int?
         
         init(name: String = "", fromReleaseDate: Date = Date(), toReleaseDate: Date = Date(), page: Int? = nil, pageSize: Int? = nil) {
             self.name = name
+            self.includeFromDate = false
             self.fromReleaseDate = fromReleaseDate
+            self.includeToDate = false
             self.toReleaseDate = toReleaseDate
             self.page = page
             self.pageSize = pageSize
@@ -27,8 +31,8 @@ extension BooksFilterView {
         func getRequest() -> GoTBookRequest {
             return GoTBookRequest(
                 name: self.name == "" ? nil : self.name,
-                fromReleaseDate: self.fromReleaseDate,
-                toReleaseDate: self.toReleaseDate,
+                fromReleaseDate: self.includeFromDate ? self.fromReleaseDate : nil,
+                toReleaseDate: self.includeToDate ? self.toReleaseDate : nil,
                 page: self.page,
                 pageSize: self.pageSize
             )
