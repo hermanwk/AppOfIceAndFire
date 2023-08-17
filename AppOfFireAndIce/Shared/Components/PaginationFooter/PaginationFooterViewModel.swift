@@ -28,6 +28,10 @@ extension PaginationFooterView {
             return pagination.prev == ""
         }
         
+        func displayPageNum() -> Bool {
+            return pagination.prev == "" && pagination.first == "" && pagination.next == "" && pagination.last == ""
+        }
+        
         func nextDisabled() -> Bool {
             return pagination.next == ""
         }

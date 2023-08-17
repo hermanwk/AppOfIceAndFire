@@ -13,53 +13,53 @@ struct PaginationFooterView: View {
     
     var body: some View {
         HStack (alignment: .center) {
-            Button("FIRST") {
-                vm.callback(vm.pagination.first)
-            }
-            .disabled(vm.firstDisabled())
-            .foregroundColor(vm.firstDisabled() ? Color.gray : Color.white)
-            .background(vm.firstDisabled() ? vm.theme.color(ColorName.lightGray) : Color.black)
-            .padding(1)
-            .cornerRadius(8)
-            
-            Button("PREV") {
-                vm.callback(vm.pagination.prev)
-            }
-            .disabled(vm.prevDisabled())
-            .foregroundColor(vm.prevDisabled() ? Color.gray : Color.white)
-            .background(vm.prevDisabled() ? vm.theme.color(ColorName.lightGray) : Color.black)
-            .padding(1)
-            .cornerRadius(8)
-            
-            Text(vm.pagination.currentPage == "" ? "1" : vm.pagination.currentPage)
+            HStack (alignment: .center) {
+                Button("<<") {
+                    vm.callback(vm.pagination.first)
+                }
+                .disabled(vm.firstDisabled())
+                .opacity(vm.firstDisabled() ? 0 : 1)
                 .foregroundColor(Color.white)
                 .background(Color.black)
                 .padding(1)
-                .cornerRadius(8)
-            
-            Button("NEXT") {
-                vm.callback(vm.pagination.next)
+                
+                Button("<") {
+                    vm.callback(vm.pagination.prev)
+                }
+                .disabled(vm.prevDisabled())
+                .opacity(vm.prevDisabled() ? 0 : 1)
+                .foregroundColor(Color.white)
+                .background(Color.black)
+                .padding(1)
+                
+                Text(vm.pagination.currentPage == "" ? "1" : vm.pagination.currentPage)
+                    .opacity(vm.displayPageNum() ? 0 : 1)
+                    .foregroundColor(Color.white)
+                    .background(Color.black)
+                
+                Button(">") {
+                    vm.callback(vm.pagination.next)
+                }
+                .disabled(vm.nextDisabled())
+                .opacity(vm.nextDisabled() ? 0 : 1)
+                .foregroundColor(Color.white)
+                .background(Color.black)
+                .padding(1)
+                
+                Button(">>") {
+                    vm.callback(vm.pagination.last)
+                }
+                .disabled(vm.lastDisabled())
+                .opacity(vm.lastDisabled() ? 0 : 1)
+                .foregroundColor(Color.white)
+                .background(Color.black)
+                .padding(1)
             }
-            .disabled(vm.nextDisabled())
-            .foregroundColor(vm.nextDisabled() ? Color.gray : Color.white)
-            .background(vm.nextDisabled() ? vm.theme.color(ColorName.lightGray) : Color.black)
-            .padding(1)
-            .cornerRadius(8)
-            
-            Button("LAST") {
-                vm.callback(vm.pagination.last)
-            }
-            .disabled(vm.lastDisabled())
-            .foregroundColor(vm.lastDisabled() ? Color.gray : Color.white)
-            .background(vm.lastDisabled() ? vm.theme.color(ColorName.lightGray) : Color.black)
-            .padding(1)
-            .cornerRadius(8)
+            .font(Font.custom(vm.theme.font(FontName.robotoRegular),
+                              size: vm.theme.fontSize(FontSizeName.fontSizeLarge)))
+            .padding(.top, 10)
+            .frame(minWidth: 0, maxWidth: .infinity)
         }
-        .font(Font.custom(vm.theme.font(FontName.robotoRegular),
-                          size: vm.theme.fontSize(FontSizeName.fontSizeLarge)))
-        .padding(.top, 10)
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .background(LinearGradient(colors: [.yellow, .orange], startPoint: .topLeading, endPoint: .bottomTrailing))
     }
 }
 

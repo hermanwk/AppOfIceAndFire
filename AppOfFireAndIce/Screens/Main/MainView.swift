@@ -2,59 +2,53 @@
 //  MainView.swift
 //  AppOfFireAndIce
 //
-//  Created by Herman Willem Keuris on 2023/08/09.
+//  Created by Herman Willem Keuris on 2023/08/16.
 //
 
 import SwiftUI
 
 struct MainView: View {
+    @Environment(\.isSearching) private var isSearching: Bool
     @ObservedObject private(set) var vm: ViewModel
-    @State var navigationStack: Stack<PageModel> = Stack<PageModel>(items: [PageModel(title: "FireAndIce")])
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color.orange
-                    .opacity(0.1)
-                    .ignoresSafeArea()
-                
-                VStack {
-                    Rectangle()
-                        .fill(Color.clear)
-                        .frame(height: 10)
-                        .background(LinearGradient(colors: [.yellow, .orange], startPoint: .topLeading, endPoint: .bottomTrailing)
-                        )
-                    
-                    content
-                }
-                .navigationTitle(navigationStack.current()!.title ?? "")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarBackButtonHidden(true)
-                .navigationBarItems(leading: Button(action : {
-                    navigationStack.pop()
-                }){
-                    if (navigationStack.current()!.type != .home) {
-                        Image(systemName: "arrow.left")
-                            .foregroundColor(Color.black)
-                    }
-                })
+        NavigationStack() {
+            NavigationLink {
+                MainFilterView(vm: MainFilterView.ViewModel(selectedTab: vm.selectedTab))
+            } label: {
+                Text("Advanced Filtering")
             }
-            .background(vm.theme.color(ColorName.lightGray))
+            
+            TabView(selection: $vm.selectedTab) {
+                HousesListView(vm: HousesListView.ViewModel(request: vm.housesRequest, cancelSearch: {
+                    vm.cancelSearch()
+                }))
+                    .tabItem {
+                        Label("Houses", systemImage: "crown.fill")
+                    }
+                    .tag(PageEnum.houses)
+                
+                CharactersListView(vm: CharactersListView.ViewModel(request: vm.charactersRequest, cancelSearch: {
+                    vm.cancelSearch()
+                }))
+                    .tabItem {
+                        Label("Characters", systemImage: "person.crop.circle")
+                    }
+                    .tag(PageEnum.characters)
+                
+                BooksListView(vm: BooksListView.ViewModel(request: vm.booksRequest, cancelSearch: {
+                    vm.cancelSearch()
+                }))
+                    .tabItem {
+                        Label("Books", systemImage: "book.fill")
+                    }
+                    .tag(PageEnum.books)
+            }
+            .navigationTitle("AppOfFireAndIce")
         }
-    }
-    
-    var content: some View {
-        switch navigationStack.current()!.type {
-        case PageEnum.home:
-            return AnyView(HomeView(vm: HomeView.ViewModel(navigationStack: $navigationStack)).background(vm.theme.color(ColorName.darkGray)))
-        case PageEnum.books:
-            return AnyView(BooksView(vm: BooksView.ViewModel(urls: navigationStack.current()!.urls, navigationStack: $navigationStack)).background(vm.theme.color(ColorName.lightGray)))
-        case PageEnum.characters:
-            return AnyView(CharactersView(vm: CharactersView.ViewModel(urls: navigationStack.current()!.urls, navigationStack: $navigationStack)).background(vm.theme.color(ColorName.lightGray)))
-        case PageEnum.houses:
-            return AnyView(HousesView(vm: HousesView.ViewModel(urls: navigationStack.current()!.urls, navigationStack: $navigationStack)).background(vm.theme.color(ColorName.lightGray)))
-        default:
-            return AnyView(HomeView(vm: HomeView.ViewModel(navigationStack: $navigationStack)).background(vm.theme.color(ColorName.lightGray)))
+        .searchable(text: $vm.searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search by keyword")
+        .onSubmit(of: .search) {
+            vm.search()
         }
     }
 }

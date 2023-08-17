@@ -11,7 +11,6 @@ import SwiftUI
 
 struct FireAndServiceService {
     let method: String = "GET"
-    var currentPagination: PaginationModel = PaginationModel()
     
     init() {}
     
