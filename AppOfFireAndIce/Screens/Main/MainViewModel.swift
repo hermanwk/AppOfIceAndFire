@@ -29,8 +29,6 @@ extension MainView {
         
         func search() {
             switch selectedTab {
-            case .home:
-                break
             case .books:
                 self.booksRequest = GoTBookRequest(name: searchText)
                 break

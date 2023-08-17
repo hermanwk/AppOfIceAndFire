@@ -8,8 +8,7 @@
 import Foundation
 
 public enum PageEnum: Int, Codable {
-    case home = 0
-    case books = 1
-    case characters = 2
-    case houses = 3
+    case books = 0
+    case characters = 1
+    case houses = 2
 }

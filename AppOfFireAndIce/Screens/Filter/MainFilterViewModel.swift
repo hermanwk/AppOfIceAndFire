@@ -19,14 +19,12 @@ extension MainFilterView {
         
         func getSearchType() -> String {
             switch selectedTab {
-            case .home:
+            case .houses:
                 return "Houses"
             case .books:
                 return "Books"
             case .characters:
                 return "Characters"
-            case .houses:
-                return "Houses"
             }
         }
     }

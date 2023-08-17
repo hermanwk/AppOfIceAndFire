@@ -14,6 +14,7 @@ struct FireAndServiceService {
     
     init() {}
     
+    // Add headers to construct the url request
     func urlRequest(url: URL) throws -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method
@@ -25,6 +26,7 @@ struct FireAndServiceService {
         return request
     }
     
+    // Extract pagination inof from the headers
     private func setCurrentPagination(response: HTTPURLResponse?) -> PaginationModel {
         let linkHeader = response?.allHeaderFields["Link"]
         if (linkHeader != nil) {
@@ -41,9 +43,11 @@ struct FireAndServiceService {
             let next = linksDictionary["rel=\"next\""] ?? ""
             
             if (next == "") {
+                // If no "next" value is returned then we are currently on the last page
                 let last = linksDictionary["rel=\"last\""] ?? ""
                 pageInt = (Int(URL(string: last)?.valueOf("page") ?? "") ?? 1)
             } else {
+                // Otherwise use the "next" value to get the current page
                 pageInt = (Int(URL(string: next)?.valueOf("page") ?? "") ?? 2) - 1
             }
             
