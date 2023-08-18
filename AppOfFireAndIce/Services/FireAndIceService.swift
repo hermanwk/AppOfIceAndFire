@@ -31,7 +31,7 @@ struct FireAndIceService {
     /// Extract pagination info from the headers of the `response` of a HTTP call
     /// - Parameter response: The response from the GET call, including headers
     /// - Returns: A PaginationModel which can be used to page through a list of returned values
-    func setCurrentPagination(response: HTTPURLResponse?) -> PaginationModel {
+    private func setCurrentPagination(response: HTTPURLResponse?) -> PaginationModel {
         let linkHeader = response?.allHeaderFields["Link"]
         if (linkHeader != nil) {
             let links = (linkHeader as AnyObject).components(separatedBy: ",")
