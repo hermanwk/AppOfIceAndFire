@@ -13,8 +13,8 @@ extension MainFilterView {
     class ViewModel: ObservableObject {
         @Published var selectedTab: PageEnum
         
-        /// <#Description#>
-        /// - Parameter selectedTab: <#selectedTab description#>
+        /// MainFilterView.ViewModel initializer
+        /// - Parameter selectedTab: The currently selected tab in the tabview
         init(selectedTab: PageEnum = PageEnum.houses) {
             self.selectedTab = selectedTab
         }
