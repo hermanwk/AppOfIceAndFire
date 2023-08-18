@@ -33,45 +33,15 @@ struct BookDetailsView: View {
                     SimpleRowView(title: "ISBN", text: vm.model?.isbn ?? "")
                     SimpleRowView(title: "Authors", text: vm.model?.authors?.joined(separator:", ") ?? "")
                     SimpleRowView(title: "Number of page", text: vm.model?.numberOfPages?.description ?? "" )
-                  SimpleRowView(title: "Publisher", text: vm.model?.publisher ?? "")
+                    SimpleRowView(title: "Publisher", text: vm.model?.publisher ?? "")
+                    SimpleRowView(title: "Country", text: vm.model?.country ?? "")
                 }
                 
                 Group {
-                    SimpleRowView(title: "Country", text: vm.model?.country ?? "")
                     SimpleRowView(title: "Media type", text: vm.model?.mediaType ?? "")
                     SimpleRowView(title: "Released", text: vm.model?.released ?? "")
-                    HStack {
-                        Text("Characters:")
-                        Spacer()
-                        NavigationLink {
-                            CharactersListView(vm: CharactersListView.ViewModel(title: "Characters in \(vm.model?.name ?? "")", urls: vm.model?.characters ?? []))
-                        } label: {
-                            HStack {
-                                Text("Show more")
-                                    .foregroundColor(Color.blue)
-                                Image(systemName: "rectangle.portrait.and.arrow.forward")
-                                    .resizable()
-                                    .foregroundColor(Color.black)
-                                    .frame(width: 14, height: 14)
-                            }
-                        }
-                    }
-                    HStack {
-                        Text("POV Character:")
-                        Spacer()
-                        NavigationLink {
-                            CharactersListView(vm: CharactersListView.ViewModel(title: "POV Characters in \(vm.model?.name ?? "")", urls: vm.model?.povCharacters ?? []))
-                        } label: {
-                            HStack {
-                                Text("Show more")
-                                    .foregroundColor(Color.blue)
-                                Image(systemName: "rectangle.portrait.and.arrow.forward")
-                                    .resizable()
-                                    .foregroundColor(Color.black)
-                                    .frame(width: 14, height: 14)
-                            }
-                        }
-                    }
+                    LinkRowView(title: "Characters", display: vm.model?.characters?.count ?? 0 > 0, navLink: CharactersListView(vm: CharactersListView.ViewModel(title: "Characters in \(vm.model?.name ?? "")", urls: vm.model?.characters ?? [])))
+                    LinkRowView(title: "POV Character", display: vm.model?.povCharacters?.count ?? 0 > 0, navLink: CharactersListView(vm: CharactersListView.ViewModel(title: "POV Characters in \(vm.model?.name ?? "")", urls: vm.model?.povCharacters ?? [])))
                 }
             }
             .navigationBarTitle(vm.title)

@@ -32,95 +32,20 @@ struct CharacterDetailsView: View {
                     SimpleRowView(title: "Culture", text: vm.model?.culture ?? "")
                     SimpleRowView(title: "Born", text: vm.model?.born ?? "")
                     SimpleRowView(title: "Died", text: vm.model?.died ?? "")
-                }
-                
-                Group {
                     SimpleRowView(title: "Titles", text: vm.model?.titles?.joined(separator:", ") ?? "")
-                    SimpleRowView(title: "Aliases", text: vm.model?.aliases?.joined(separator:", ") ?? "")
-                    HStack {
-                        Text("Father:")
-                        Spacer()
-                        NavigationLink {
-                            CharacterDetailsView(vm: CharacterDetailsView.ViewModel(title: "Father of \(vm.model?.name ?? "")", url: vm.model?.father ?? ""))
-                        } label: {
-                            HStack {
-                                Text("Show more")
-                                    .foregroundColor(Color.blue)
-                                Image(systemName: "rectangle.portrait.and.arrow.forward")
-                                    .resizable()
-                                    .foregroundColor(Color.black)
-                                    .frame(width: 14, height: 14)
-                            }
-                        }
-                    }
-                    HStack {
-                        Text("Mother:")
-                        Spacer()
-                        NavigationLink {
-                            CharacterDetailsView(vm: CharacterDetailsView.ViewModel(title: "Mother of \(vm.model?.name ?? "")", url: vm.model?.mother ?? ""))
-                        } label: {
-                            HStack {
-                                Text("Show more")
-                                    .foregroundColor(Color.blue)
-                                Image(systemName: "rectangle.portrait.and.arrow.forward")
-                                    .resizable()
-                                    .foregroundColor(Color.black)
-                                    .frame(width: 14, height: 14)
-                            }
-                        }
-                    }
-                    HStack {
-                        Text("Spouse:")
-                        Spacer()
-                        NavigationLink {
-                            CharacterDetailsView(vm: CharacterDetailsView.ViewModel(title: "Spouse of \(vm.model?.name ?? "")", url: vm.model?.spouse ?? ""))
-                        } label: {
-                            HStack {
-                                Text("Show more")
-                                    .foregroundColor(Color.blue)
-                                Image(systemName: "rectangle.portrait.and.arrow.forward")
-                                    .resizable()
-                                    .foregroundColor(Color.black)
-                                    .frame(width: 14, height: 14)
-                            }
-                        }
-                    }
                 }
                 
                 Group {
-                    HStack {
-                        Text("Allegiances:")
-                        Spacer()
-                        NavigationLink {
-                            HousesListView(vm: HousesListView.ViewModel(title: "Allegiances of \(vm.model?.name ?? "")", urls: vm.model?.allegiances ?? []))
-                        } label: {
-                            HStack {
-                                Text("Show more")
-                                    .foregroundColor(Color.blue)
-                                Image(systemName: "rectangle.portrait.and.arrow.forward")
-                                    .resizable()
-                                    .foregroundColor(Color.black)
-                                    .frame(width: 14, height: 14)
-                            }
-                        }
-                    }
-                    HStack {
-                        Text("Books:")
-                        Spacer()
-                        NavigationLink {
-                            BooksListView(vm: BooksListView.ViewModel(title: "Books featuring \(vm.model?.name ?? "")", urls: vm.model?.books ?? []))
-                        } label: {
-                            HStack {
-                                Text("Show more")
-                                    .foregroundColor(Color.blue)
-                                Image(systemName: "rectangle.portrait.and.arrow.forward")
-                                    .resizable()
-                                    .foregroundColor(Color.black)
-                                    .frame(width: 14, height: 14)
-                            }
-                        }
-                    }
-                    SimpleRowView(title: "POV in Books", text: vm.model?.povBooks?.joined(separator:", ") ?? "")
+                    SimpleRowView(title: "Aliases", text: vm.model?.aliases?.joined(separator:", ") ?? "")
+                    LinkRowView(title: "Father", display: !(vm.model?.father?.isEmpty ?? true), navLink: CharacterDetailsView(vm: CharacterDetailsView.ViewModel(title: "Father of \(vm.model?.name ?? "")", url: vm.model?.father ?? "")))
+                    LinkRowView(title: "Mother", display: !(vm.model?.mother?.isEmpty ?? true), navLink: CharacterDetailsView(vm: CharacterDetailsView.ViewModel(title: "Mother of \(vm.model?.name ?? "")", url: vm.model?.mother ?? "")))
+                    LinkRowView(title: "Spouse", display: !(vm.model?.spouse?.isEmpty ?? true), navLink: CharacterDetailsView(vm: CharacterDetailsView.ViewModel(title: "Spouse of \(vm.model?.name ?? "")", url: vm.model?.spouse ?? "")))
+                    LinkRowView(title: "Allegiances", display: vm.model?.allegiances?.count ?? 0 > 0, navLink: HousesListView(vm: HousesListView.ViewModel(title: "Allegiances of \(vm.model?.name ?? "")", urls: vm.model?.allegiances ?? [])))
+                }
+                
+                Group {
+                    LinkRowView(title: "Books", display: vm.model?.books?.count ?? 0 > 0, navLink: BooksListView(vm: BooksListView.ViewModel(title: "Books featuring \(vm.model?.name ?? "")", urls: vm.model?.books ?? [])))
+                    LinkRowView(title: "POV in Books", display: vm.model?.povBooks?.count ?? 0 > 0, navLink: BooksListView(vm: BooksListView.ViewModel(title: "POV in \(vm.model?.name ?? "")", urls: vm.model?.books ?? [])))
                     SimpleRowView(title: "In TV series", text: vm.model?.tvSeries?.joined(separator:", ") ?? "")
                     SimpleRowView(title: "Played by", text: vm.model?.playedBy?.joined(separator:", ") ?? "")
                 }

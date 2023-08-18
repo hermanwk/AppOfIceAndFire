@@ -69,6 +69,7 @@
 		0985A0A12A8F50A90078BF2C /* ConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09383A3F2A83F1B700C45774 /* ConfigKeys.swift */; };
 		0985A0A22A8F50B90078BF2C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09383AC12A84FBF700C45774 /* Extensions.swift */; };
 		0985A0A62A8F563E0078BF2C /* CharactersListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985A0A52A8F563D0078BF2C /* CharactersListViewTests.swift */; };
+		0985A0A72A8F776F0078BF2C /* LinkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985A0762A8EAD290078BF2C /* LinkRowView.swift */; };
 		09F361702A8B7DCD003F0F8A /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F3616F2A8B7DCD003F0F8A /* ListItemView.swift */; };
 		09F361722A8B7E99003F0F8A /* ListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F361712A8B7E99003F0F8A /* ListItemViewModel.swift */; };
 		09F361792A8B94E0003F0F8A /* HousesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F361782A8B94E0003F0F8A /* HousesListView.swift */; };
@@ -700,6 +701,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0985A0852A8ED6260078BF2C /* Themes.swift in Sources */,
+				0985A0A72A8F776F0078BF2C /* LinkRowView.swift in Sources */,
 				0985A0972A8F4DD10078BF2C /* GoTHouseDto.swift in Sources */,
 				0985A0872A8ED8430078BF2C /* MainViewTests.swift in Sources */,
 				0985A07D2A8ED6040078BF2C /* MainFilterViewModel.swift in Sources */,
