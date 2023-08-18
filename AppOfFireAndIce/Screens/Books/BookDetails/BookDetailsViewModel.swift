@@ -15,6 +15,10 @@ extension BookDetailsView {
         var isLoading: Bool
         var apiService: FireAndServiceService
         
+        /// BookDetailsView.ViewModel initializer when a `GoTBookDto` object is passed
+        /// - Parameters:
+        ///   - title: The title to be displayed in the Navigation Bar
+        ///   - book: The data model which contains the details of the currently displayed book
         init(title: String = "Book Details", book: GoTBookDto) {
             self.title = title
             self.model = book
@@ -23,6 +27,10 @@ extension BookDetailsView {
             apiService = FireAndServiceService()
         }
         
+        /// BookDetailsView.ViewModel initializer when a url pointing to the specific book is passed
+        /// - Parameters:
+        ///   - title: The title to be displayed in the Navigation Bar
+        ///   - url: A url that can be used to get detailed information of a specific book
         init(title: String = "Book Details",url: String) {
             self.title = title
             self.url = url
@@ -31,6 +39,7 @@ extension BookDetailsView {
             getBookDetails()
         }
         
+        /// Makes a GET call to get detailed information of a specific book
         func getBookDetails() {
             let dispatchGroup = DispatchGroup()
             
@@ -47,7 +56,6 @@ extension BookDetailsView {
                 }
             } catch {
                 self.isLoading = false
-                // TODO: Handle error
             }
         }
     }

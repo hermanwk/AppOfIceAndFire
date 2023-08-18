@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GoTBookRequest: IGoTObjectRequest {
+struct GoTBookRequest: Codable, Equatable {
     var name: String?
     var fromReleaseDate: Date?
     var toReleaseDate: Date?
@@ -15,7 +15,7 @@ struct GoTBookRequest: IGoTObjectRequest {
     var pageSize: Int?
 }
 
-struct GoTBookDto: IGoTObjectDto {
+struct GoTBookDto: Codable, Hashable {
     var url: String?
     var name: String?
     var isbn: String?

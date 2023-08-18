@@ -14,7 +14,9 @@ struct FireAndServiceService {
     
     init() {}
     
-    // Add headers to construct the url request
+    /// Add headers to construct the url request from the given `url`
+    /// - Parameter url: The url of the specified GET call.
+    /// - Returns: A URLRequest from the given `url`
     func urlRequest(url: URL) throws -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method
@@ -26,7 +28,9 @@ struct FireAndServiceService {
         return request
     }
     
-    // Extract pagination inof from the headers
+    /// Extract pagination info from the headers of the `response` of a HTTP call
+    /// - Parameter response: The response from the GET call, including headers
+    /// - Returns: A PaginationModel which can be used to page through a list of returned values
     private func setCurrentPagination(response: HTTPURLResponse?) -> PaginationModel {
         let linkHeader = response?.allHeaderFields["Link"]
         if (linkHeader != nil) {
@@ -66,6 +70,10 @@ struct FireAndServiceService {
         
     }
     
+    /// Generic GET call
+    /// - Parameters:
+    ///   - urlRequest: The URLRequest of the GET call to be made
+    ///   - completionHandler: The completionHandler returns a generic decodable `Value` as well as a `PaginationModel` to page through the returned `Value` if that `Value` is an array
     func call<Value: Decodable>(urlRequest: URLRequest, completionHandler: @escaping (Value, PaginationModel) -> Void) {
         URLSession.shared.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
           if let error = error {

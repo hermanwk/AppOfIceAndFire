@@ -17,8 +17,13 @@ extension MainView {
         @Published var charactersRequest: GoTCharacterRequest
         @Published var housesRequest: GoTHouseRequest
         
-        private var subscriptions = Set<AnyCancellable>()
-        
+        /// MainView.ViewModel initializer
+        /// - Parameters:
+        ///   - selectedTab: Currently selected tab
+        ///   - searchText: Search term used to search for specific books, characters or houses
+        ///   - booksRequest: A request object used to search for specific books
+        ///   - charactersRequest: A request object used to search for specific characters
+        ///   - housesRequest: A request object used to search for specific houses
         init(selectedTab: PageEnum = PageEnum.houses, searchText: String = "", booksRequest: GoTBookRequest = GoTBookRequest(), charactersRequest: GoTCharacterRequest = GoTCharacterRequest(), housesRequest: GoTHouseRequest = GoTHouseRequest()) {
             self.selectedTab = selectedTab
             self.searchText = searchText
@@ -27,6 +32,7 @@ extension MainView {
             self.housesRequest = housesRequest
         }
         
+        /// Construct a request object to be used to make a GET call to get a  list of either books,  characters or houses
         func search() {
             switch selectedTab {
             case .books:
@@ -41,6 +47,7 @@ extension MainView {
             }
         }
         
+        /// Resets the variables used to make a search of all books,  characters or houses
         func cancelSearch() {
             searchText = ""
             search()

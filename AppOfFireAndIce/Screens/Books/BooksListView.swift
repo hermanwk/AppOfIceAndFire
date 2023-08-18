@@ -23,7 +23,7 @@ struct BooksListView: View {
                     NavigationLink {
                         BookDetailsView(vm: BookDetailsView.ViewModel(title: "Book Details", book: book))
                     } label: {
-                        ListItemView(vm: ListItemView.ViewModel(image: vm.getGenderIcon(book: book),  primaryTitle: "Title", primaryText: book.name ?? "", secondaryTitle: "Media type", secondaryText: book.mediaType ?? ""))
+                        ListItemView(vm: ListItemView.ViewModel(image: BookThemes.getBookIcon(book: book.mediaType ?? ""),  primaryTitle: "Title", primaryText: book.name ?? "", secondaryTitle: "Media type", secondaryText: book.mediaType ?? ""))
                     }.accentColor(.black)
                 }
                 .listStyle(.plain)

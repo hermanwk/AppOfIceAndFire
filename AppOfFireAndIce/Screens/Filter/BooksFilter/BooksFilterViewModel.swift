@@ -18,6 +18,13 @@ extension BooksFilterView {
         var page: Int?
         var pageSize: Int?
         
+        /// BooksFilterView.ViewModel initializer
+        /// - Parameters:
+        ///   - name: Filter by the name of the book(s)
+        ///   - fromReleaseDate: Filter by books released after this date
+        ///   - toReleaseDate: Filter by books released before this date
+        ///   - page: The current page of pagination
+        ///   - pageSize: The number of items per page of pagination
         init(name: String = "", fromReleaseDate: Date = Date(), toReleaseDate: Date = Date(), page: Int? = nil, pageSize: Int? = nil) {
             self.name = name
             self.includeFromDate = false
@@ -28,6 +35,8 @@ extension BooksFilterView {
             self.pageSize = pageSize
         }
         
+        /// Construct a `GoTBookRequest` object to be used to make a GET call to get a filtered list of books
+        /// - Returns: The `GoTBookRequest` object to be used in the GET call
         func getRequest() -> GoTBookRequest {
             return GoTBookRequest(
                 name: self.name == "" ? nil : self.name,
@@ -38,7 +47,8 @@ extension BooksFilterView {
             )
         }
         
-        // Get the date of the first publishing of GRR Martin's work. i.e. 01-01-1977
+        /// Get the date of the first published work of GRR Martin. i.e. 01-01-1977
+        /// - Returns: A `Date` object for the date: 01-01-1977
         func getFirstPublishingDate() -> Date {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy/MM/dd"

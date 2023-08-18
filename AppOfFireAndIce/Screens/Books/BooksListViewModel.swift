@@ -14,9 +14,15 @@ extension BooksListView {
         var isLoading: Bool
         var pagination: PaginationModel
         var apiService: FireAndServiceService
-        var cancelSearch: () -> Void
         @Published var model: [GoTBookDto]
+        var cancelSearch: () -> Void
         
+        /// BooksListView.ViewModel initializer
+        /// - Parameters:
+        ///   - title: The title to be displayed in the Navigation Bar
+        ///   - urls: A list of urls to be called to get a list of books
+        ///   - request: A request object which can be used to get a filtered list of books
+        ///   - cancelSearch: A method to be called when cancelling the search filtering of books
         init(title: String = "Books", urls: [String]? = nil, request: GoTBookRequest? = nil, cancelSearch: @escaping () -> () = {}) {
             self.title = title
             isLoading = false
@@ -34,6 +40,8 @@ extension BooksListView {
             }
         }
         
+        /// Get a filtered list of books from a request object
+        /// - Parameter request: A `GoTBookRequest` object which is  used to filter for specific books
         func getBooksFromModel(request: GoTBookRequest) {
             isLoading = true
             
@@ -55,11 +63,12 @@ extension BooksListView {
                     }
                 }
             } catch {
-                // TODO
                 self.isLoading = false
             }
         }
         
+        /// Get a  list of books from a list of urls
+        /// - Parameter urls: A list of urls to be called to construct a list of books
         func getBooksFromUrls(urls: [String]?) {
             isLoading = true
             let dispatchGroup = DispatchGroup()
@@ -76,7 +85,7 @@ extension BooksListView {
                         }
                     }
                 } catch {
-                    // TODO: Handle error
+                    isLoading = false
                 }
             })
             
@@ -85,6 +94,8 @@ extension BooksListView {
             }
         }
         
+        /// Get a  list of books from a list of urls provided by a `PaginationModel`
+        /// - Parameter url: A url provided by a `PaginationModel` used to get a list of books
         func getBooksFromPaginationUrls(url: String){
             do {
                 self.isLoading = true
@@ -97,27 +108,7 @@ extension BooksListView {
                     }
                 }
             } catch {
-                // TODO: Handle error
                 self.isLoading = false
-            }
-        }
-        
-        func getPrimaryTitleText(character: GoTCharacterDto) -> [String] {
-            if (!(character.name?.isEmpty ?? true)) {
-                return ["Name", character.name ?? ""]
-            } else {
-                return ["Aliases", character.aliases?.joined(separator:", ") ?? ""]
-            }
-        }
-        
-        func getGenderIcon(book: GoTBookDto) -> String {
-            switch book.mediaType {
-            case "GraphicNovel":
-                return "blackSpear"
-            case "Paperback":
-                return "iceKnife"
-            default:
-                return "flameSword"
             }
         }
     }

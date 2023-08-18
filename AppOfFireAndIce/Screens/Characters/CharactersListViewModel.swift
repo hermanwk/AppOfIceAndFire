@@ -13,9 +13,15 @@ extension CharactersListView {
         var isLoading: Bool
         var pagination: PaginationModel
         var apiService: FireAndServiceService
-        var cancelSearch: () -> Void
         @Published var model: [GoTCharacterDto]
+        var cancelSearch: () -> Void
         
+        /// CharactersListView.ViewModel initializer
+        /// - Parameters:
+        ///   - title: The title to be displayed in the Navigation Bar
+        ///   - urls: A list of urls to be called to get a list of characters
+        ///   - request: A request object which can be used to get a filtered list of characters
+        ///   - cancelSearch: A method to be called when cancelling the search filtering of characters
         init(title: String = "Characters", urls: [String]? = nil, request: GoTCharacterRequest? = nil, cancelSearch: @escaping () -> () = {}) {
             self.title = title
             isLoading = false
@@ -33,6 +39,8 @@ extension CharactersListView {
             }
         }
         
+        /// Get a filtered list of characters from a request object
+        /// - Parameter request: A `GoTCharacterRequest` object which is  used to filter for specific characters
         func getCharactersFromModel(request: GoTCharacterRequest) {
             isLoading = true
             
@@ -58,10 +66,11 @@ extension CharactersListView {
                 }
             } catch {
                 self.isLoading = false
-                // TODO: Handle error
             }
         }
         
+        /// Get a  list of characters from a list of urls
+        /// - Parameter urls: A list of urls to be called to construct a list of characters
         func getCharactersFromUrls(urls: [String]?) {
             isLoading = true
             let dispatchGroup = DispatchGroup()
@@ -78,7 +87,7 @@ extension CharactersListView {
                         }
                     }
                 } catch {
-                    // TODO: Handle error
+                    isLoading = false
                 }
             })
             
@@ -87,6 +96,8 @@ extension CharactersListView {
             }
         }
         
+        /// Get a  list of characters from a list of urls provided by a `PaginationModel`
+        /// - Parameter url: A url provided by a `PaginationModel` used to get a list of characters
         func getCharactersFromPaginationUrls(url: String){
             do {
                 self.isLoading = true
@@ -100,18 +111,12 @@ extension CharactersListView {
                 }
             } catch {
                 self.isLoading = false
-                // TODO: Handle error
             }
         }
         
-        func getPrimaryTitleText(character: GoTCharacterDto) -> [String] {
-            if (!(character.name?.isEmpty ?? true)) {
-                return ["Name", character.name ?? ""]
-            } else {
-                return ["Aliases", character.aliases?.joined(separator:", ") ?? ""]
-            }
-        }
-        
+        /// Used to account for missing data in returned `GoTCharacterDto` objects. A field is selected as a secondary identifier for the character and is given a relevant label for that field
+        /// - Parameter character: A `GoTCharacterDto` object used to select a secondary identifier field for the character
+        /// - Returns: An array of two strings. The first is the label to be used for the identifier field and the second is the value of the identifier field
         func getSecondaryTitleText(character: GoTCharacterDto) -> [String] {
             if (!(character.name?.isEmpty ?? true) && !(character.aliases?.count ?? 0 > 0)) {
                 return ["Aliases", character.aliases?.joined(separator:", ") ?? ""]
@@ -123,17 +128,6 @@ extension CharactersListView {
                 return ["Gender", character.gender ?? ""]
             } else {
                 return ["", ""]
-            }
-        }
-        
-        func getGenderIcon(character: GoTCharacterDto) -> String {
-            switch character.gender {
-            case "Male":
-                return "male"
-            case "Female":
-                return "female"
-            default:
-                return "unknownGender"
             }
         }
     }

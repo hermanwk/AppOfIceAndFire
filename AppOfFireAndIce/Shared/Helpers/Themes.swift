@@ -49,6 +49,10 @@ public enum BookName: String {
 }
 
 public struct HouseThemes {
+    
+    /// Get the icon name of the specified region's overlord
+    /// - Parameter region: A region in Westeros with an overlord
+    /// - Returns: The name of an icon which is the house crest of the overlord of the specified region
     static func getOverlordIcon(region: String) -> String {
         switch region {
         case HouseType.westerlands.rawValue:
@@ -76,6 +80,9 @@ public struct HouseThemes {
         }
     }
     
+    /// Get a `Color` associated with overlord of the specified region
+    /// - Parameter region: A region in Westeros with an overlord
+    /// - Returns: The `Color` associated with that region's overlord
     static func getOverlordColor(region: String) -> Color {
         switch region {
         case HouseType.westerlands.rawValue:
@@ -105,6 +112,10 @@ public struct HouseThemes {
 }
 
 public struct CharacterThemes {
+    
+    /// Get the icon for a specific gender
+    /// - Parameter gender: The specific gender to get an icon for
+    /// - Returns: The name of an icon associated with that specific gender
     static func getGenderIcon(gender: String) -> String {
         switch gender {
         case "Male":
@@ -116,6 +127,9 @@ public struct CharacterThemes {
         }
     }
     
+    /// Get a `Color` for a specific gender
+    /// - Parameter gender: The specific gender to get a `Color` for
+    /// - Returns: The `Color` associated with that specific gender
     static func getCharacterColor(gender: String) -> Color {
         switch gender {
         case GenderType.male.rawValue:
@@ -127,6 +141,9 @@ public struct CharacterThemes {
         }
     }
     
+    /// Used to account for missing data in returned `GoTCharacterDto` objects. A field is selected as a primary identifier for the character and is given a relevant label for that field
+    /// - Parameter character: A `GoTCharacterDto` object used to select a primary identifier field for the character
+    /// - Returns: An array of two strings. The first is the label to be used for the identifier field and the second is the value of the identifier field
     static func getCharacterIdentifier(character: GoTCharacterDto?) -> [String] {
         if (character == nil) {
             return ["", ""]
@@ -139,6 +156,10 @@ public struct CharacterThemes {
 }
 
 public struct BookThemes {
+    
+    /// Get the icon for a type of media
+    /// - Parameter book: The type of media to get an icon for
+    /// - Returns: The name of an icon associated with that type of media
     static func getBookIcon(book: String) -> String {
         switch book {
         case BookType.graphicNovel.rawValue:
@@ -150,6 +171,9 @@ public struct BookThemes {
         }
     }
     
+    /// Get a `Color` for a specific book
+    /// - Parameter gender: The specific book to get a `Color` for
+    /// - Returns: The `Color` associated with that specific book
     static func getBookColor(book: String) -> Color {
         switch book {
         case BookName.gameOfThrones.rawValue:
@@ -181,6 +205,9 @@ public struct BookThemes {
         }
     }
     
+    /// Get the icon for a specific book
+    /// - Parameter book: The specific book to get an icon for
+    /// - Returns: The name of an icon associated with that specific book
     static func getBookImage(book: String) -> String {
         switch book {
         case BookName.gameOfThrones.rawValue:

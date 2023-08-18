@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GoTHouseRequest: IGoTObjectRequest {
+struct GoTHouseRequest: Codable, Equatable {
     var name: String?
     var region: String?
     var words: String?
@@ -20,7 +20,7 @@ struct GoTHouseRequest: IGoTObjectRequest {
     var pageSize: Int?
 }
 
-struct GoTHouseDto: IGoTObjectDto {
+struct GoTHouseDto: Codable, Hashable {
     var url: String?
     var name: String?
     var region: String?

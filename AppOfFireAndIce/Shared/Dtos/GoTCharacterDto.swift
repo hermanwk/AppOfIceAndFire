@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GoTCharacterRequest: IGoTObjectRequest {
+struct GoTCharacterRequest: Codable, Equatable {
     var name: String?
     var gender: String?
     var culture: String?
@@ -18,7 +18,7 @@ struct GoTCharacterRequest: IGoTObjectRequest {
     var pageSize: Int?
 }
 
-struct GoTCharacterDto: IGoTObjectDto {
+struct GoTCharacterDto: Codable, Hashable {
     var url: String?
     var name: String?
     var gender: String?

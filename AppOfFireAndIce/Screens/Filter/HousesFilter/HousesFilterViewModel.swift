@@ -21,6 +21,18 @@ extension HousesFilterView {
         var page: Int?
         var pageSize: Int?
         
+        /// HousesFilterView.ViewModel initializer
+        /// - Parameters:
+        ///   - name: Filter by the name of the house(s)
+        ///   - region: Filter by the region where the house(s) is/are located
+        ///   - words: Filter by the words of the house
+        ///   - hasWords: Filter by whether houses have words or not
+        ///   - hasTitles: Filter by whether houses have titles or not
+        ///   - hasSeats: Filter by whether houses have seats or not
+        ///   - hasDiedOut: Filter by whether houses have died out or not
+        ///   - hasAncestralWeapons: Filter by whether houses have ancestral weapons or not
+        ///   - page: The current page of pagination
+        ///   - pageSize: The number of items per page of pagination
         init(name: String = "", region: String = "", words: String = "", hasWords: Int = 0, hasTitles: Int = 0, hasSeats: Int = 0, hasDiedOut: Int = 0, hasAncestralWeapons: Int = 0, page: Int? = nil, pageSize: Int? = nil) {
             self.name = name
             self.region = region
@@ -34,6 +46,8 @@ extension HousesFilterView {
             self.pageSize = pageSize
         }
         
+        /// Construct a `GoTHouseRequest` object to be used to make a GET call to get a filtered list of houses
+        /// - Returns: The `GoTHouseRequest` object to be used in the GET call
         func getRequest() -> GoTHouseRequest {
             var hasWordsBool: Bool? = nil
             if (self.hasWords == 1) {

@@ -15,6 +15,10 @@ extension CharacterDetailsView {
         var isLoading: Bool
         var apiService: FireAndServiceService
         
+        /// CharacterDetailsView.ViewModel initializer when a `GoTCharacterDto` object is passed
+        /// - Parameters:
+        ///   - title: The title to be displayed in the Navigation Bar
+        ///   - book: The data model which contains the details of the currently displayed character
         init(title: String = "Character Details", character: GoTCharacterDto) {
             self.title = title
             self.model = character
@@ -23,6 +27,10 @@ extension CharacterDetailsView {
             apiService = FireAndServiceService()
         }
         
+        /// CharacterDetailsView.ViewModel initializer when a url pointing to the specific character is passed
+        /// - Parameters:
+        ///   - title: The title to be displayed in the Navigation Bar
+        ///   - url: A url that can be used to get detailed information of a specific character
         init(title: String = "Character Details", url: String) {
             self.title = title
             self.url = url
@@ -33,6 +41,7 @@ extension CharacterDetailsView {
             }
         }
         
+        /// Makes a GET call to get detailed information of a specific character
         func getCharacterDetails() {
             let dispatchGroup = DispatchGroup()
             
@@ -49,7 +58,6 @@ extension CharacterDetailsView {
                 }
             } catch {
                 self.isLoading = false
-                // TODO: Handle error
             }
         }
     }

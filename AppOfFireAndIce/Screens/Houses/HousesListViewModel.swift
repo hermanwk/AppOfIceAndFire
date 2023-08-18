@@ -14,9 +14,15 @@ extension HousesListView {
         var isLoading: Bool
         var pagination: PaginationModel
         var apiService: FireAndServiceService
-        var cancelSearch: () -> Void
         @Published var model: [GoTHouseDto]
+        var cancelSearch: () -> Void
         
+        /// HousesListView.ViewModel initializer
+        /// - Parameters:
+        ///   - title: The title to be displayed in the Navigation Bar
+        ///   - urls: A list of urls to be called to get a list of houses
+        ///   - request: A request object which can be used to get a filtered list of houses
+        ///   - cancelSearch: A method to be called when cancelling the search filtering of houses
         init(title: String = "Houses", urls: [String]? = nil, request: GoTHouseRequest? = nil, cancelSearch: @escaping () -> () = {}) {
             self.title = title
             isLoading = false
@@ -32,6 +38,8 @@ extension HousesListView {
             }
         }
         
+        /// Get a filtered list of houses from a request object
+        /// - Parameter request: A `GoTHouseRequest` object which is  used to filter for specific houses
         func getHousesFromModel(request: GoTHouseRequest) {
             isLoading = true
             
@@ -59,10 +67,11 @@ extension HousesListView {
                 }
             } catch {
                 isLoading = false
-                // TODO: Handle error
             }
         }
         
+        /// Get a  list of houses from a list of urls
+        /// - Parameter urls: A list of urls to be called to construct a list of houses
         func getHousesFromUrls(urls: [String]?) {
             isLoading = true
             let dispatchGroup = DispatchGroup()
@@ -79,7 +88,7 @@ extension HousesListView {
                         }
                     }
                 } catch {
-                    // TODO: Handle error
+                    isLoading = false
                 }
             })
             
@@ -88,6 +97,8 @@ extension HousesListView {
             }
         }
         
+        /// Get a  list of houses from a list of urls provided by a `PaginationModel`
+        /// - Parameter url: A url provided by a `PaginationModel` used to get a list of houses
         func getHousesFromPaginationUrls(url: String){
             do {
                 self.isLoading = true
@@ -100,7 +111,7 @@ extension HousesListView {
                     }
                 }
             } catch {
-                // TODO: Handle error
+                isLoading = false
             }
         }
     }
