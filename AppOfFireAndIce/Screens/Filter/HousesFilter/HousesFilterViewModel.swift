@@ -86,8 +86,8 @@ extension HousesFilterView {
             
             return GoTHouseRequest(
                 name: self.name == "" ? nil : self.name,
-                region: self.region == "" ? nil : self.name,
-                words: self.words == "" ? nil : self.name,
+                region: self.region == "" ? nil : self.region,
+                words: self.words == "" ? nil : self.words,
                 hasWords: hasWordsBool,
                 hasTitles: hasTitlesBool,
                 hasSeats: hasSeatsBool,

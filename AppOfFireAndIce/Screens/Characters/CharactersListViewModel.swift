@@ -12,7 +12,7 @@ extension CharactersListView {
         var title: String
         var isLoading: Bool
         var pagination: PaginationModel
-        var apiService: FireAndServiceService
+        var apiService: FireAndIceService
         @Published var model: [GoTCharacterDto]
         var cancelSearch: () -> Void
         
@@ -26,7 +26,7 @@ extension CharactersListView {
             self.title = title
             isLoading = false
             pagination = PaginationModel()
-            apiService = FireAndServiceService()
+            apiService = FireAndIceService()
             model = []
             self.cancelSearch = cancelSearch
             
@@ -44,7 +44,7 @@ extension CharactersListView {
         func getCharactersFromModel(request: GoTCharacterRequest) {
             isLoading = true
             
-            var components = URLComponents(string: "\(EnvVars.baseUrl)\(FireAndServiceService.API.getCharacters.path)")!
+            var components = URLComponents(string: "\(EnvVars.baseUrl)\(FireAndIceService.API.getCharacters.path)")!
             components.queryItems = [
                 URLQueryItem(name: "name", value: request.name),
                 URLQueryItem(name: "gender", value: request.gender),

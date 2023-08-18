@@ -13,7 +13,7 @@ extension CharacterDetailsView {
         var model: GoTCharacterDto?
         var url: String
         var isLoading: Bool
-        var apiService: FireAndServiceService
+        var apiService: FireAndIceService
         
         /// CharacterDetailsView.ViewModel initializer when a `GoTCharacterDto` object is passed
         /// - Parameters:
@@ -24,7 +24,7 @@ extension CharacterDetailsView {
             self.model = character
             self.url = ""
             self.isLoading = false
-            apiService = FireAndServiceService()
+            apiService = FireAndIceService()
         }
         
         /// CharacterDetailsView.ViewModel initializer when a url pointing to the specific character is passed
@@ -35,7 +35,7 @@ extension CharacterDetailsView {
             self.title = title
             self.url = url
             self.isLoading = false
-            apiService = FireAndServiceService()
+            apiService = FireAndIceService()
             if (!self.url.isEmpty) {
                 getCharacterDetails()
             }

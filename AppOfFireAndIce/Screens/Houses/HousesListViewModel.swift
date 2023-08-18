@@ -13,7 +13,7 @@ extension HousesListView {
         var title: String
         var isLoading: Bool
         var pagination: PaginationModel
-        var apiService: FireAndServiceService
+        var apiService: FireAndIceService
         @Published var model: [GoTHouseDto]
         var cancelSearch: () -> Void
         
@@ -27,7 +27,7 @@ extension HousesListView {
             self.title = title
             isLoading = false
             pagination = PaginationModel()
-            apiService = FireAndServiceService()
+            apiService = FireAndIceService()
             model = []
             self.cancelSearch = cancelSearch
             
@@ -43,7 +43,7 @@ extension HousesListView {
         func getHousesFromModel(request: GoTHouseRequest) {
             isLoading = true
             
-            var components = URLComponents(string: "\(EnvVars.baseUrl)\(FireAndServiceService.API.getHouses.path)")!
+            var components = URLComponents(string: "\(EnvVars.baseUrl)\(FireAndIceService.API.getHouses.path)")!
             components.queryItems = [
                 URLQueryItem(name: "name", value: request.name ?? ""),
                 URLQueryItem(name: "region", value: request.region ?? ""),

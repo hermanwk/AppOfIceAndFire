@@ -13,7 +13,7 @@ extension BooksListView {
         var title: String
         var isLoading: Bool
         var pagination: PaginationModel
-        var apiService: FireAndServiceService
+        var apiService: FireAndIceService
         @Published var model: [GoTBookDto]
         var cancelSearch: () -> Void
         
@@ -27,7 +27,7 @@ extension BooksListView {
             self.title = title
             isLoading = false
             pagination = PaginationModel()
-            apiService = FireAndServiceService()
+            apiService = FireAndIceService()
             model = []
             self.cancelSearch = cancelSearch
             
@@ -45,7 +45,7 @@ extension BooksListView {
         func getBooksFromModel(request: GoTBookRequest) {
             isLoading = true
             
-            var components = URLComponents(string: "\(EnvVars.baseUrl)\(FireAndServiceService.API.getBooks.path)")!
+            var components = URLComponents(string: "\(EnvVars.baseUrl)\(FireAndIceService.API.getBooks.path)")!
             components.queryItems = [
                 URLQueryItem(name: "name", value: request.name),
                 URLQueryItem(name: "fromReleaseDate", value: request.fromReleaseDate?.description),

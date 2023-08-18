@@ -13,7 +13,7 @@ extension BookDetailsView {
         var model: GoTBookDto?
         var url: String
         var isLoading: Bool
-        var apiService: FireAndServiceService
+        var apiService: FireAndIceService
         
         /// BookDetailsView.ViewModel initializer when a `GoTBookDto` object is passed
         /// - Parameters:
@@ -24,7 +24,7 @@ extension BookDetailsView {
             self.model = book
             self.url = ""
             self.isLoading = false
-            apiService = FireAndServiceService()
+            apiService = FireAndIceService()
         }
         
         /// BookDetailsView.ViewModel initializer when a url pointing to the specific book is passed
@@ -35,7 +35,7 @@ extension BookDetailsView {
             self.title = title
             self.url = url
             self.isLoading = false
-            apiService = FireAndServiceService()
+            apiService = FireAndIceService()
             getBookDetails()
         }
         

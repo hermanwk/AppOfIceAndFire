@@ -2,11 +2,10 @@
 //  AppOfFireAndIceTests.swift
 //  AppOfFireAndIceTests
 //
-//  Created by Herman Willem Keuris on 2023/08/09.
+//  Created by Herman Willem Keuris on 2023/08/18.
 //
 
 import XCTest
-@testable import AppOfFireAndIce
 
 final class AppOfFireAndIceTests: XCTestCase {
 

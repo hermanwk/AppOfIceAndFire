@@ -9,7 +9,7 @@ import Combine
 import Foundation
 import SwiftUI
 
-struct FireAndServiceService {
+struct FireAndIceService {
     let method: String = "GET"
     
     init() {}
@@ -31,16 +31,18 @@ struct FireAndServiceService {
     /// Extract pagination info from the headers of the `response` of a HTTP call
     /// - Parameter response: The response from the GET call, including headers
     /// - Returns: A PaginationModel which can be used to page through a list of returned values
-    private func setCurrentPagination(response: HTTPURLResponse?) -> PaginationModel {
+    func setCurrentPagination(response: HTTPURLResponse?) -> PaginationModel {
         let linkHeader = response?.allHeaderFields["Link"]
         if (linkHeader != nil) {
             let links = (linkHeader as AnyObject).components(separatedBy: ",")
             var linksDictionary: [String: String] = [:]
             links.forEach({
                 let components = $0.components(separatedBy:"; ")
-                var cleanPath = components[0].trimmingCharacters(in: CharacterSet(charactersIn: "<>"))
-                cleanPath = cleanPath.replacingOccurrences(of: " ", with: "")
-                linksDictionary[components[1]] = cleanPath.replacingOccurrences(of: "<", with: "")
+                if (components.count > 1) {
+                    var cleanPath = components[0].trimmingCharacters(in: CharacterSet(charactersIn: "<>"))
+                    cleanPath = cleanPath.replacingOccurrences(of: " ", with: "")
+                    linksDictionary[components[1]] = cleanPath.replacingOccurrences(of: "<", with: "")
+                }
             })
             
             var pageInt = -1
@@ -67,7 +69,6 @@ struct FireAndServiceService {
         } else {
             return PaginationModel()
         }
-        
     }
     
     /// Generic GET call
@@ -97,7 +98,7 @@ struct FireAndServiceService {
       }
 }
 
-extension FireAndServiceService {
+extension FireAndIceService {
     enum API {
         case getBooks
         case getCharacters
@@ -105,7 +106,7 @@ extension FireAndServiceService {
     }
 }
 
-extension FireAndServiceService.API {
+extension FireAndIceService.API {
     var path: String {
         switch self {
         case .getBooks:

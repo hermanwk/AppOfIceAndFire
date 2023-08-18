@@ -16,7 +16,7 @@ final class MainViewTests: XCTestCase {
         self.sut = MainView(vm: MainView.ViewModel())
     }
     
-    func testBookSearch() {
+    func testBookSearchWithCancel() {
         sut.vm.selectedTab = PageEnum.books
         sut.vm.searchText = "Test book"
         sut.vm.search()
@@ -40,7 +40,7 @@ final class MainViewTests: XCTestCase {
         XCTAssertEqual(actualCanceledRequest, expectedCanceledRequest)
     }
     
-    func testCharacterSearch() {
+    func testCharacterSearchWithCancel() {
         sut.vm.selectedTab = PageEnum.characters
         sut.vm.searchText = "Test character"
         sut.vm.search()
@@ -64,7 +64,7 @@ final class MainViewTests: XCTestCase {
         XCTAssertEqual(actualCanceledRequest, expectedCanceledRequest)
     }
     
-    func testHouseSearch() {
+    func testHouseSearchWithCancel() {
         sut.vm.selectedTab = PageEnum.houses
         sut.vm.searchText = "Test house"
         sut.vm.search()

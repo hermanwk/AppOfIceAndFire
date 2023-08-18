@@ -13,7 +13,7 @@ extension HouseDetailsView {
         var model: GoTHouseDto?
         var url: String
         var isLoading: Bool
-        var apiService: FireAndServiceService
+        var apiService: FireAndIceService
         
         /// HouseDetailsView.ViewModel initializer when a `GoTHouseDto` object is passed
         /// - Parameters:
@@ -24,7 +24,7 @@ extension HouseDetailsView {
             self.model = house
             self.url = ""
             self.isLoading = false
-            apiService = FireAndServiceService()
+            apiService = FireAndIceService()
         }
         
         /// HouseDetailsView.ViewModel initializer when a url pointing to the specific house is passed
@@ -35,7 +35,7 @@ extension HouseDetailsView {
             self.title = title
             self.url = url
             self.isLoading = false
-            apiService = FireAndServiceService()
+            apiService = FireAndIceService()
             getHouseDetails()
         }
         
