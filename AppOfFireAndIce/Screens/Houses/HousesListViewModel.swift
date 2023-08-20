@@ -23,11 +23,11 @@ extension HousesListView {
         ///   - urls: A list of urls to be called to get a list of houses
         ///   - request: A request object which can be used to get a filtered list of houses
         ///   - cancelSearch: A method to be called when cancelling the search filtering of houses
-        init(title: String = "Houses", urls: [String]? = nil, request: GoTHouseRequest? = nil, cancelSearch: @escaping () -> () = {}) {
+        init(isMocked: Bool = false, title: String = "Houses", urls: [String]? = nil, request: GoTHouseRequest? = nil, cancelSearch: @escaping () -> () = {}) {
             self.title = title
             isLoading = false
             pagination = PaginationModel()
-            apiService = FireAndIceService()
+            apiService = FireAndIceService(isMocked: isMocked)
             model = []
             self.cancelSearch = cancelSearch
             
@@ -89,6 +89,7 @@ extension HousesListView {
                     }
                 } catch {
                     isLoading = false
+                    dispatchGroup.leave()
                 }
             })
             

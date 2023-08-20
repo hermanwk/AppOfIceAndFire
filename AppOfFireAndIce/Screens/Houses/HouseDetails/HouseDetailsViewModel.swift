@@ -19,23 +19,23 @@ extension HouseDetailsView {
         /// - Parameters:
         ///   - title: The title to be displayed in the Navigation Bar
         ///   - book: The data model which contains the details of the currently displayed house
-        init(title: String = "Book Details", house: GoTHouseDto) {
+        init(isMocked: Bool = false, title: String = "Book Details", house: GoTHouseDto) {
             self.title = title
             self.model = house
             self.url = ""
             self.isLoading = false
-            apiService = FireAndIceService()
+            apiService = FireAndIceService(isMocked: isMocked)
         }
         
         /// HouseDetailsView.ViewModel initializer when a url pointing to the specific house is passed
         /// - Parameters:
         ///   - title: The title to be displayed in the Navigation Bar
         ///   - url: A url that can be used to get detailed information of a specific house
-        init(title: String = "Book Details", url: String) {
+        init(isMocked: Bool = false, title: String = "Book Details", url: String) {
             self.title = title
             self.url = url
             self.isLoading = false
-            apiService = FireAndIceService()
+            apiService = FireAndIceService(isMocked: isMocked)
             getHouseDetails()
         }
         
@@ -56,6 +56,7 @@ extension HouseDetailsView {
                 }
             } catch {
                 self.isLoading = false
+                dispatchGroup.leave()
             }
         }
     }

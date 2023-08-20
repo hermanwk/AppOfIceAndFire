@@ -23,11 +23,11 @@ extension BooksListView {
         ///   - urls: A list of urls to be called to get a list of books
         ///   - request: A request object which can be used to get a filtered list of books
         ///   - cancelSearch: A method to be called when cancelling the search filtering of books
-        init(title: String = "Books", urls: [String]? = nil, request: GoTBookRequest? = nil, cancelSearch: @escaping () -> () = {}) {
+        init(isMocked: Bool = false, title: String = "Books", urls: [String]? = nil, request: GoTBookRequest? = nil, cancelSearch: @escaping () -> () = {}) {
             self.title = title
             isLoading = false
             pagination = PaginationModel()
-            apiService = FireAndIceService()
+            apiService = FireAndIceService(isMocked: isMocked)
             model = []
             self.cancelSearch = cancelSearch
             
@@ -86,6 +86,7 @@ extension BooksListView {
                     }
                 } catch {
                     isLoading = false
+                    dispatchGroup.leave()
                 }
             })
             

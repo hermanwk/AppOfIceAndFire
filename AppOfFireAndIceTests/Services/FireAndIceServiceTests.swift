@@ -35,4 +35,26 @@ final class FireAndIceServiceTests: XCTestCase {
             super.record(XCTIssue(type: .assertionFailure, compactDescription: "Failed to set URL headers"))
         }
     }
+    
+    func testSetCurrentPagination() {
+        guard let url = URL(string: "www.test.com") else {
+            super.record(XCTIssue(type: .assertionFailure, compactDescription: "Could not construct URL"))
+            return
+        }
+        var newHeaders = [String: String]()
+        
+        newHeaders["Link"] = "<https://www.anapioficeandfire.com/api/characters?page=1&pageSize=10>; rel=\"first\", <https://www.anapioficeandfire.com/api/characters?page=2&pageSize=10>; rel=\"prev\", <https://www.anapioficeandfire.com/api/characters?page=4&pageSize=10>; rel=\"next\", <https://www.anapioficeandfire.com/api/characters?page=214&pageSize=10>; rel=\"last\","
+        let actualUrlResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "1", headerFields: newHeaders)
+        let actualPagination = sut.setCurrentPagination(response: actualUrlResponse)
+        let expectedPaginationFirst = "https://www.anapioficeandfire.com/api/characters?page=1&pageSize=10"
+        XCTAssertEqual(actualPagination.first, expectedPaginationFirst)
+        let expectedPaginationPrev = "https://www.anapioficeandfire.com/api/characters?page=2&pageSize=10"
+        XCTAssertEqual(actualPagination.prev, expectedPaginationPrev)
+        let expectedPaginationNext = "https://www.anapioficeandfire.com/api/characters?page=4&pageSize=10"
+        XCTAssertEqual(actualPagination.next, expectedPaginationNext)
+        let expectedPaginationLast = "https://www.anapioficeandfire.com/api/characters?page=214&pageSize=10"
+        XCTAssertEqual(actualPagination.last, expectedPaginationLast)
+        let expectedPaginationCurrentPage = "3"
+        XCTAssertEqual(actualPagination.currentPage, expectedPaginationCurrentPage)
+    }
 }

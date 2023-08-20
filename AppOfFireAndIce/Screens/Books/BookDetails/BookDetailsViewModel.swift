@@ -19,23 +19,23 @@ extension BookDetailsView {
         /// - Parameters:
         ///   - title: The title to be displayed in the Navigation Bar
         ///   - book: The data model which contains the details of the currently displayed book
-        init(title: String = "Book Details", book: GoTBookDto) {
+        init(isMocked: Bool = false, title: String = "Book Details", book: GoTBookDto) {
             self.title = title
             self.model = book
             self.url = ""
             self.isLoading = false
-            apiService = FireAndIceService()
+            apiService = FireAndIceService(isMocked: isMocked)
         }
         
         /// BookDetailsView.ViewModel initializer when a url pointing to the specific book is passed
         /// - Parameters:
         ///   - title: The title to be displayed in the Navigation Bar
         ///   - url: A url that can be used to get detailed information of a specific book
-        init(title: String = "Book Details",url: String) {
+        init(isMocked: Bool = false, title: String = "Book Details",url: String) {
             self.title = title
             self.url = url
             self.isLoading = false
-            apiService = FireAndIceService()
+            apiService = FireAndIceService(isMocked: isMocked)
             getBookDetails()
         }
         
@@ -56,6 +56,7 @@ extension BookDetailsView {
                 }
             } catch {
                 self.isLoading = false
+                dispatchGroup.leave()
             }
         }
     }

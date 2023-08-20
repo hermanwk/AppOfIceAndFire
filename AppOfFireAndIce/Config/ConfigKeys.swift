@@ -8,5 +8,5 @@
 import Foundation
 
 enum EnvVars {
-    static let baseUrl = "https://www.anapioficeandfire.com/api"
+    static let baseUrl: String = "https://www.anapioficeandfire.com/api"
 }

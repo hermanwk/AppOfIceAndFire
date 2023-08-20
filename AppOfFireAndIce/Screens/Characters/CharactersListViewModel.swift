@@ -22,11 +22,11 @@ extension CharactersListView {
         ///   - urls: A list of urls to be called to get a list of characters
         ///   - request: A request object which can be used to get a filtered list of characters
         ///   - cancelSearch: A method to be called when cancelling the search filtering of characters
-        init(title: String = "Characters", urls: [String]? = nil, request: GoTCharacterRequest? = nil, cancelSearch: @escaping () -> () = {}) {
+        init(isMocked: Bool = false, title: String = "Characters", urls: [String]? = nil, request: GoTCharacterRequest? = nil, cancelSearch: @escaping () -> () = {}) {
             self.title = title
             isLoading = false
             pagination = PaginationModel()
-            apiService = FireAndIceService()
+            apiService = FireAndIceService(isMocked: isMocked)
             model = []
             self.cancelSearch = cancelSearch
             
@@ -88,6 +88,7 @@ extension CharactersListView {
                     }
                 } catch {
                     isLoading = false
+                    dispatchGroup.leave()
                 }
             })
             
